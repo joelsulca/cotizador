@@ -15,7 +15,7 @@ class Cotizador_Model extends CI_Model
 
     public function get_anio_fabricacion()
     {
-        $query = $this->db->get('anio_fabricacion');
+        $query = $this->db->order_by('nombre', 'desc')->get('anio_fabricacion');
         return $query->result();
     }
 
