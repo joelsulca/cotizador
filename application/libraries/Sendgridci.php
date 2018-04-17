@@ -6,7 +6,7 @@
  * Date: 4/17/2018
  * Time: 2:50 PM
  */
-class SendgridCI
+class Sendgridci
 {
 
     public function __construct($params = [])
