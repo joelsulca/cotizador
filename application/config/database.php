@@ -75,11 +75,11 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'us-cdbr-iron-east-05.cleardb.net',
-	'username' => 'b6df07084300b1',
-	'password' => '974692a7',
-	'database' => 'heroku_fd2fa101abec91c',
-	'dbdriver' => 'mysqli',
+	'hostname' => getenv('DATABASE_HOSTNAME'),
+	'username' => getenv('DATABASE_USERNAME'),
+	'password' => getenv('DATABASE_PASSWORD'),
+	'database' => getenv('DATABASE_NAME'),
+	'dbdriver' => getenv('DATABASE_DRIVER'),
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
