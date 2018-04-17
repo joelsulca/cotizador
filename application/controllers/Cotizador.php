@@ -37,18 +37,48 @@ class Cotizador extends CI_Controller {
         if($this->input->post('vehiculo_uso') === 'option1' ) {
             $this->load->model('Cotizador_Model');
             $id = $this->Cotizador_Model->save_cotizacion($data) ;
-            // TODO: send mails
-            if($id) {
+
+            if($id && $this->_send_mail($data)) {
                 redirect("/cotizador/cotizacion/$id", 'refresh', 200);
             }
         }
 
-        redirect("/cotizador/cotizacion_error/", 'refresh', 200);
+        //redirect("/cotizador/cotizacion_error/", 'refresh', 200);
     }
 
     public function cotizacion_error()
     {
         $this->load->library('twig');
         $this->twig->display('cotizacion_error');
+    }
+
+    private function _send_mail($data){
+        $config = Array(
+            'protocol' => 'smtp',
+            'smtp_host' => 'ssl://smtp.googlemail.com',
+            'smtp_port' => 465,
+            'smtp_user' => 'ariansen.cliente@gmail.com',
+            'smtp_pass' => 'Cuzco2018',
+            'mailtype'  => 'html',
+            'charset'   => 'iso-8859-1'
+        );
+        $this->load->library('email', $config);
+
+        $this->email->from('ariansen.cliente@gmail.com', 'Ariansen Contacto');
+        $this->email->to($data['conductor_correo']);
+        //$this->email->bcc('them@their-example.com');
+
+        $this->email->subject('Cotizacion Ariansen');
+        $this->email->message('Le enviamos los detalles de su cotizacion.');
+
+        $nombres = $data['conductor_nombres'] . " " . $data['conductor_apellidos'];
+        $this->email->from('ariansen.cliente@gmail.com', 'Ariansen Contacto');
+        $this->email->to("ariansen1@gmail.com");
+        //$this->email->bcc('them@their-example.com');
+
+        $this->email->subject('Cotizacion Ariansen');
+        $this->email->message("Le enviamos los detalles de la cotizacion de $nombres");
+
+        return $this->email->send();
     }
 }
