@@ -61,7 +61,7 @@ class Cotizador extends CI_Controller {
         // for client
         $r1 = $this->sendgridci->sendMail('ariansen.cliente@gmail.com', $data['conductor_correo'], "Ariansen Contacto", "Le enviamos los detalles de su cotizacion.");
         // for ariansen
-        $mail  = $this->twig->render('mails/contacto', $data);
+        $mail  = $this->twig->render('mails/contacto', array('cotizacion' => $data));
         $r2 = $this->sendgridci->sendHtmlMail('ariansen.cliente@gmail.com', "ariansen1@gmail.com", "Cotizacion Ariansen de $nombres", $mail);
         return $r1 & $r2;
     }
