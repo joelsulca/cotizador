@@ -3,21 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Cotizador extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
 	public function index()
 	{
         $this->load->model('Cotizador_Model');
@@ -27,7 +12,7 @@ class Cotizador extends CI_Controller {
 
 
         $data = array('marcas' => $marcas, 'annos'=>$annos);
-        $this->twig->display('test', $data);
+        $this->twig->display('cotizacion_contacto', $data);
     }
 
     public function modelos($marca)
@@ -35,5 +20,35 @@ class Cotizador extends CI_Controller {
         $this->load->model('Cotizador_Model');
         $modelos = $this->Cotizador_Model->get_modelos($marca);
         echo json_encode($modelos);
+    }
+
+    public function cotizacion($contacto_id)
+    {
+        $this->load->library('twig');
+        $this->load->model('Cotizador_Model');
+        $cotizacion = $this->Cotizador_Model->get_cotizacion($contacto_id) ;
+        $data = array('cotizacion' => $cotizacion);
+        $this->twig->display('cotizacion', $data);
+    }
+
+    public function contacto()
+    {
+        $data = $this->input->post();
+        if($this->input->post('vehiculo_uso') === 'option1' ) {
+            $this->load->model('Cotizador_Model');
+            $id = $this->Cotizador_Model->save_cotizacion($data) ;
+            // TODO: send mails
+            if($id) {
+                redirect("/cotizador/cotizacion/$id", 'refresh', 200);
+            }
+        }
+
+        redirect("/cotizador/cotizacion_error/", 'refresh', 200);
+    }
+
+    public function cotizacion_error()
+    {
+        $this->load->library('twig');
+        $this->twig->display('cotizacion_error');
     }
 }
