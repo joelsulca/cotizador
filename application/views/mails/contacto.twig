@@ -1,0 +1,12 @@
+
+<h1>Le enviamos los datos de la solicitud #{{ cotizacion.id }}</h1>
+<br>
+<table border="1">
+    <tr><td>Datos del cliente</td></tr>
+    <tr> <td>Nombre Completo:</td> <td>{{ cotizacion.conductor_nombres }} {{ cotizacion.conductor_apellidos }}</td></tr>
+    <tr> <td>Email:</td> <td>{{ cotizacion.conductor_correo }} </td></tr>
+    <tr> <td>DNI:</td> <td>{{ cotizacion.conductor_dni }}</td></tr>
+    <tr> <td>Fecha solicitud:</td> <td>{{ cotizacion.fecha_creacion }}</td></tr>
+    <tr><td>Datos de la cotizacion</td></tr>
+    <tr><td>Vehiculo:</td> <td>Marca: </td></tr>
+</table>

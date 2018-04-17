@@ -43,7 +43,7 @@ class Cotizador extends CI_Controller {
             }
         }
 
-        //redirect("/cotizador/cotizacion_error/", 'refresh', 200);
+        redirect("/cotizador/cotizacion_error/", 'refresh', 200);
     }
 
     public function cotizacion_error()
@@ -52,33 +52,17 @@ class Cotizador extends CI_Controller {
         $this->twig->display('cotizacion_error');
     }
 
-    private function _send_mail($data){
-        $config = Array(
-            'protocol' => 'smtp',
-            'smtp_host' => 'ssl://smtp.googlemail.com',
-            'smtp_port' => 465,
-            'smtp_user' => 'ariansen.cliente@gmail.com',
-            'smtp_pass' => 'Cuzco2018',
-            'mailtype'  => 'html',
-            'charset'   => 'iso-8859-1'
-        );
-        $this->load->library('email', $config);
-
-        $this->email->from('ariansen.cliente@gmail.com', 'Ariansen Contacto');
-        $this->email->to($data['conductor_correo']);
-        //$this->email->bcc('them@their-example.com');
-
-        $this->email->subject('Cotizacion Ariansen');
-        $this->email->message('Le enviamos los detalles de su cotizacion.');
+    private function _send_mail($data)
+    {
+        $this->load->library('sendgridci');
+        $this->load->library('twig');
 
         $nombres = $data['conductor_nombres'] . " " . $data['conductor_apellidos'];
-        $this->email->from('ariansen.cliente@gmail.com', 'Ariansen Contacto');
-        $this->email->to("ariansen1@gmail.com");
-        //$this->email->bcc('them@their-example.com');
-
-        $this->email->subject('Cotizacion Ariansen');
-        $this->email->message("Le enviamos los detalles de la cotizacion de $nombres");
-
-        return $this->email->send();
+        // for client
+        $r1 = $this->sendgridci->sendMail('ariansen.cliente@gmail.com', $data['conductor_correo'], "Ariansen Contacto", "Le enviamos los detalles de su cotizacion.");
+        // for ariansen
+        $mail  = $this->twig->render('mails/contacto', $data);
+        $r2 = $this->sendgridci->sendHtmlMail('ariansen.cliente@gmail.com', "ariansen1@gmail.com", "Cotizacion Ariansen de $nombres", $mail);
+        return $r1 & $r2;
     }
 }

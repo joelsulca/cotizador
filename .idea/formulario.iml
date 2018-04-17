@@ -8,6 +8,8 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/codeigniter/framework" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/mikey179/vfsStream" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/sendgrid/php-http-client" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/sendgrid/sendgrid" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/twig/twig" />
     </content>
     <orderEntry type="inheritedJdk" />
@@ -30,12 +32,16 @@
           <root url="file://$MODULE_DIR$/vendor/codeigniter/framework" />
           <root url="file://$MODULE_DIR$/vendor/composer" />
           <root url="file://$MODULE_DIR$/vendor/mikey179/vfsStream" />
+          <root url="file://$MODULE_DIR$/vendor/sendgrid/php-http-client" />
+          <root url="file://$MODULE_DIR$/vendor/sendgrid/sendgrid" />
           <root url="file://$MODULE_DIR$/vendor/twig/twig" />
         </CLASSES>
         <SOURCES>
           <root url="file://$MODULE_DIR$/vendor/codeigniter/framework" />
           <root url="file://$MODULE_DIR$/vendor/composer" />
           <root url="file://$MODULE_DIR$/vendor/mikey179/vfsStream" />
+          <root url="file://$MODULE_DIR$/vendor/sendgrid/php-http-client" />
+          <root url="file://$MODULE_DIR$/vendor/sendgrid/sendgrid" />
           <root url="file://$MODULE_DIR$/vendor/twig/twig" />
         </SOURCES>
       </library>
