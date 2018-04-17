@@ -20,7 +20,20 @@ class Cotizador extends CI_Controller {
 	 */
 	public function index()
 	{
+        $this->load->model('Cotizador_Model');
         $this->load->library('twig');
-        $this->twig->display('test');
+        $marcas = $this->Cotizador_Model->get_marcas();
+        $annos = $this->Cotizador_Model->get_anio_fabricacion();
+
+
+        $data = array('marcas' => $marcas, 'annos'=>$annos);
+        $this->twig->display('test', $data);
+    }
+
+    public function modelos($marca)
+    {
+        $this->load->model('Cotizador_Model');
+        $modelos = $this->Cotizador_Model->get_modelos($marca);
+        echo json_encode($modelos);
     }
 }

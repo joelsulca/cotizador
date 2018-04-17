@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="{{ base_url("assets/css/bootstrap.min.css") }}">
     <script src="{{ base_url("assets/js/bootstrap.min.js") }}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{{ base_url("assets/js/cotizador.js") }}"></script>
     <link rel="stylesheet" href="{{ base_url("assets/css/vehiculo.css") }}">
 </head>
 <body>
@@ -20,11 +21,16 @@
                 <h5>DATOS DEL VEHÍCULO</h5>
                 <div class="form-group">
                     <label>Marca</label>
-                    <select class="form-control"></select>
+                    <select class="form-control" id="s-marca">
+                        <option selected="selected">Seleccione</option>
+                        {% for marca in marcas %}
+                            <option value="{{ marca.id }}">{{ marca.nombre }}</option>
+                        {% endfor %}
+                    </select>
                 </div>
                 <div class="form-group">
                     <label>Modelo</label>
-                    <select class="form-control"></select>
+                    <select class="form-control" id="s-modelo"></select>
                 </div>
                 <div class="form-group row">
 
@@ -44,7 +50,11 @@
                     </div>
                     <div class="col-lg-6">
                         <label>Año de fabricación</label>
-                        <select class="form-control"></select>
+                        <select class="form-control">
+                            {% for anno in annos %}
+                                <option value="{{ anno.id }}">{{ anno.nombre }}</option>
+                            {% endfor %}
+                        </select>
                     </div>
                 </div>
                 <!-- TODO AQUI DEBE CALCULAR HACIA ABAJO Y HACIA ARRIBA 10%, DE ACUERDO AL VALOR DE LA MARCA DEL CARRO-->
