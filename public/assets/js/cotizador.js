@@ -1,10 +1,10 @@
 $(document).ready(function () {
 
     function get_modelos(marca) {
-        if(marca) {
+        if (marca) {
             $.ajax({
                 dataType: "json",
-                url: '/cotizador/modelos/' + marca,
+                url: 'modelos/' + marca,
                 success: function (response) {
                     $('#s-modelo').find('option').remove();
 
@@ -19,10 +19,10 @@ $(document).ready(function () {
     }
 
     function get_annios(marca, modelo) {
-        if(modelo) {
+        if (modelo) {
             $.ajax({
                 dataType: "json",
-                url: '/cotizador/annios/' + marca + '/' + modelo,
+                url: 'annios/' + marca + '/' + modelo,
                 success: function (response) {
                     $('#s-annio').find('option').remove();
 
@@ -32,19 +32,42 @@ $(document).ready(function () {
                     });
                 }
             });
-        }else{
+        } else {
             $('#s-annio').find('option').remove();
             $('<option/>').val("").html('Seleccione').appendTo('#s-annio');
+        }
+    }
+
+    function set_valor_comercial(costo) {
+        var porcentual_valor = Math.round(costo * 0.1);
+        $('#r-valor-com').attr('min', costo-porcentual_valor);
+        $('#r-valor-com').attr('max', costo+porcentual_valor);
+        $('#r-valor-com').attr('value', costo);
+        show_valor_comercial(costo);
+    }
+
+    function show_valor_comercial(valor){
+        if( !isNaN(valor)) {
+            var monto = valor.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            $('#valor-comercial').html("<b>$ " + monto + "</b>");
         }
     }
 
     get_modelos($('#s-marca').val());
 
     $('#s-marca').on('change', function () {
-       get_modelos(this.value);
+        get_modelos(this.value);
     });
 
     $('#s-modelo').on('change', function () {
         get_annios($('#s-marca').val(), this.value);
+    });
+
+    $('#s-annio').on('change', function () {
+        set_valor_comercial( parseFloat($(this).find('option:selected').data('costo')) );
+    });
+
+    $('#r-valor-com').on('input', function () {
+        show_valor_comercial(this.value);
     });
 });

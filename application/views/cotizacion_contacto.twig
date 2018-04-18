@@ -13,7 +13,7 @@
 <div class="container">
     <br>
     <p class="color-red"><strong>Completa el formulario y cotiza al instante</strong></p>
-    <form method="post" action="/cotizador/contacto/">
+    <form method="post" action="contacto/">
 
         <div class="row">
 
@@ -60,7 +60,8 @@
                 <!-- TODO AQUI DEBE CALCULAR HACIA ABAJO Y HACIA ARRIBA 10%, DE ACUERDO AL VALOR DE LA MARCA DEL CARRO-->
                 <div class="form-group">
                     <label>Valor comercial</label>
-                    <input type="range" min="1" max="100" value="50" class="slider" id="myRange" name="vehiculo_valor" required="required">
+                    <span id="valor-comercial"></span>
+                    <input type="range" min="1" max="100" value="100" class="slider" id="r-valor-com" name="vehiculo_valor" required="required">
                 </div>
             </div>
             <!--SEGUNDA COLUMNA PARA DATOS DEL CONDUCTOR-->
