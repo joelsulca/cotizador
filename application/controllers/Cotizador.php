@@ -20,10 +20,10 @@ class Cotizador extends CI_Controller {
         echo json_encode($modelos);
     }
 
-    public function annios($modelo)
+    public function annios($marca, $modelo)
     {
         $this->load->model('Cotizador_Model');
-        $data =  $annos = $this->Cotizador_Model->get_anio_fabricacion($modelo);
+        $data =  $annos = $this->Cotizador_Model->get_anio_fabricacion($marca, $modelo);
         echo json_encode($data);
     }
 

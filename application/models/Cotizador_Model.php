@@ -13,12 +13,12 @@ class Cotizador_Model extends CI_Model
         return $query->result();
     }
 
-    public function get_anio_fabricacion($modelo)
+    public function get_anio_fabricacion($marca, $modelo)
     {
         $query = $this->db
-            ->where(array('modelo_id'=>$modelo))
-            ->order_by('anio_fabricacion_id', 'desc')
-            ->get('modelo_anio_fabricacion');
+            ->where(array('modelo_id'=>$modelo,'marca_id'=>$marca))
+            ->order_by('anio_fabricacion', 'desc')
+            ->get('auto');
         return $query->result_array();
     }
 

@@ -18,17 +18,17 @@ $(document).ready(function () {
         }
     }
 
-    function get_annios(modelo) {
+    function get_annios(marca, modelo) {
         if(modelo) {
             $.ajax({
                 dataType: "json",
-                url: '/cotizador/annios/' + modelo,
+                url: '/cotizador/annios/' + marca + '/' + modelo,
                 success: function (response) {
                     $('#s-annio').find('option').remove();
 
                     $('<option/>').val("").html('Seleccione').appendTo('#s-annio');
                     $.each(response, function (index, item) {
-                        $('<option/>').val(item.anio_fabricacion_id).html(item.anio_fabricacion_id).appendTo('#s-annio');
+                        $('<option/>').val(item.anio_fabricacion).data('costo', item.costo).html(item.anio_fabricacion).appendTo('#s-annio');
                     });
                 }
             });
@@ -45,6 +45,6 @@ $(document).ready(function () {
     });
 
     $('#s-modelo').on('change', function () {
-        get_annios(this.value);
+        get_annios($('#s-marca').val(), this.value);
     });
 });
