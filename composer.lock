@@ -1,9 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
+    "hash": "14f58108f49e4b72322b2a9b180f9035",
     "content-hash": "2350fea6d4c016bc9282559cdbff87cc",
     "packages": [
         {
@@ -37,7 +38,7 @@
             ],
             "description": "The CodeIgniter framework",
             "homepage": "https://codeigniter.com",
-            "time": "2018-03-22T14:48:55+00:00"
+            "time": "2018-03-22 14:48:55"
         },
         {
             "name": "sendgrid/php-http-client",
@@ -89,7 +90,7 @@
                 "rest",
                 "sendgrid"
             ],
-            "time": "2016-06-11T00:47:24+00:00"
+            "time": "2016-06-11 00:47:24"
         },
         {
             "name": "sendgrid/sendgrid",
@@ -135,7 +136,7 @@
                 "send",
                 "sendgrid"
             ],
-            "time": "2016-09-13T17:27:23+00:00"
+            "time": "2016-09-13 17:27:23"
         },
         {
             "name": "twig/twig",
@@ -200,7 +201,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2018-03-20T04:25:58+00:00"
+            "time": "2018-03-20 04:25:58"
         }
     ],
     "packages-dev": [
@@ -232,7 +233,7 @@
                 "BSD"
             ],
             "homepage": "http://vfs.bovigo.org/",
-            "time": "2012-08-25T12:49:29+00:00"
+            "time": "2012-08-25 12:49:29"
         }
     ],
     "aliases": [],

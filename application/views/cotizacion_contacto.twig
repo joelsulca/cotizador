@@ -30,7 +30,9 @@
                 </div>
                 <div class="form-group">
                     <label>Modelo</label>
-                    <select class="form-control" id="s-modelo" name="vehiculo_modelo" required="required"></select>
+                    <select class="form-control" id="s-modelo" name="vehiculo_modelo" required="required">
+                        <option value="" selected="selected">Seleccione</option>
+                    </select>
                 </div>
                 <div class="form-group row">
 
@@ -50,11 +52,8 @@
                     </div>
                     <div class="col-lg-6">
                         <label>Año de fabricación</label>
-                        <select class="form-control" name="vehiculo_annio" required="required">
+                        <select class="form-control" name="vehiculo_annio" required="required" id="s-annio">
                             <option value="" selected="selected">Seleccione</option>
-                            {% for anno in annos %}
-                                <option value="{{ anno.id }}">{{ anno.nombre }}</option>
-                            {% endfor %}
                         </select>
                     </div>
                 </div>

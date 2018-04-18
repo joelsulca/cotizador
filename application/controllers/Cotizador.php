@@ -8,10 +8,8 @@ class Cotizador extends CI_Controller {
         $this->load->model('Cotizador_Model');
         $this->load->library('twig');
         $marcas = $this->Cotizador_Model->get_marcas();
-        $annos = $this->Cotizador_Model->get_anio_fabricacion();
 
-
-        $data = array('marcas' => $marcas, 'annos'=>$annos);
+        $data = array('marcas' => $marcas);
         $this->twig->display('cotizacion_contacto', $data);
     }
 
@@ -20,6 +18,13 @@ class Cotizador extends CI_Controller {
         $this->load->model('Cotizador_Model');
         $modelos = $this->Cotizador_Model->get_modelos($marca);
         echo json_encode($modelos);
+    }
+
+    public function annios($modelo)
+    {
+        $this->load->model('Cotizador_Model');
+        $data =  $annos = $this->Cotizador_Model->get_anio_fabricacion($modelo);
+        echo json_encode($data);
     }
 
     public function cotizacion($contacto_id)
