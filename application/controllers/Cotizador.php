@@ -43,7 +43,9 @@ class Cotizador extends CI_Controller {
             $this->load->model('Cotizador_Model');
             $id = $this->Cotizador_Model->save_cotizacion($data) ;
 
-            if($id && $this->_send_mail($data)) {
+            $cotizacion = $this->Cotizador_Model->get_cotizacion($id) ;
+
+            if($id && $this->_send_mail($cotizacion)) {
                 redirect("/cotizador/cotizacion/$id", 'refresh', 200);
             }
         }
@@ -62,9 +64,9 @@ class Cotizador extends CI_Controller {
         $this->load->library('sendgridci');
         $this->load->library('twig');
 
-        $nombres = $data['conductor_nombres'] . " " . $data['conductor_apellidos'];
+        $nombres = $data->conductor_nombres . " " . $data->conductor_apellidos;
         // for client
-        $r1 = $this->sendgridci->sendMail('ariansen.cliente@gmail.com', $data['conductor_correo'], "Ariansen Contacto", "Le enviamos los detalles de su cotizacion.");
+        $r1 = $this->sendgridci->sendMail('ariansen.cliente@gmail.com', $data->conductor_correo, "Ariansen Contacto", "Le enviamos los detalles de su cotizacion.");
         // for ariansen
         $mail  = $this->twig->render('mails/contacto', array('cotizacion' => $data));
         $r2 = $this->sendgridci->sendHtmlMail('ariansen.cliente@gmail.com', "ariansen1@gmail.com", "Cotizacion Ariansen de $nombres", $mail);

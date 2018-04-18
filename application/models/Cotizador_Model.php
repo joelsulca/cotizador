@@ -50,7 +50,7 @@ class Cotizador_Model extends CI_Model
     public function get_cotizacion($id)
     {
         $query = $this->db
-            ->query("select cc.conductor_apellidos, cc.conductor_celular, cc.conductor_correo, cc.conductor_dni,
+            ->query("select cc.id, cc.conductor_apellidos, cc.conductor_celular, cc.conductor_correo, cc.conductor_dni,
 cc.conductor_nombres, cc.conductor_sexo, cc.fecha_creacion, cc.vehiculo_anio_fabricacion_id,
 cc.vehiculo_valor_comercial, mm.nombre as marca, m.nombre as modelo
 from cotizacion_contacto cc inner join modelo m 

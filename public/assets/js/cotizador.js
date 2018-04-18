@@ -60,7 +60,9 @@ $(document).ready(function () {
     }
 
     function format_valor(valor){
-        return valor.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        if( !isNaN(valor)) {
+            return valor.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
     }
 
     get_modelos($('#s-marca').val());
