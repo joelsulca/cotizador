@@ -4,21 +4,85 @@
     <meta charset="UTF-8">
     <title>Cotizador de seguros - autos</title>
     <link rel="stylesheet" href="{{ base_url("assets/css/bootstrap.min.css") }}">
+    <!-- STYLESHEETS  -->
+    <link rel="stylesheet" href="{{ base_url("assets/css/animate.min.css") }}">
+    <link rel="stylesheet" href="{{ base_url("assets/icon-fonts/styles.css")}}">
+    <!-- CUSTOM STYLES -->
+    <link rel="stylesheet" href="{{ base_url("assets/css/styles.css") }}">
+    <link rel="stylesheet" href="{{ base_url("assets/css/responsive.css") }}">
+    <link rel="stylesheet" href="{{ base_url("assets/css/others.css") }}">
     <script src="{{ base_url("assets/js/bootstrap.min.js") }}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="{{ base_url("assets/js/cotizador.js") }}"></script>
+
     <link rel="stylesheet" href="{{ base_url("assets/css/vehiculo.css") }}">
 </head>
 <body>
-<div class="container">
-    <br>
-    <p class="color-red"><strong>Completa el formulario y cotiza al instante</strong></p>
-    <form method="post" action="contacto/">
+<div class="preloader">
+    <div class="status">&nbsp;</div>
+</div>
+<div class="container-fluid"
+     style="height:40px; background-color:#D80027; font-family: 'Signika', sans-serif;  color:#fff">
+    <div class="container">
+        <div class="col-md-4 text-center" style="padding:6px;">
+            <p><i class="icon-fontawesome-webfont-329" style="padding-right:10px"></i>ariansen@ariansen.pe</p>
+        </div>
+        <div class="col-md-4 text-center" style="padding:6px;">
+            <p><i class="icon-fontawesome-webfont-101" style="padding-right:10px"></i>+51 514 - 8600</p>
+        </div>
+        <div class="col-md-4 text-center" style="padding:6px;">
+            <a href="https://www.facebook.com/AriansenSeguros" target="_blank" style=" color:#fff">
+                <p><i class="fa fa-facebook" style="padding-right:10px"></i>ariansenseguros</p>
+            </a>
+        </div>
+    </div>
+</div>
+<nav id="main-nav" class="navbar navbar-inverse bs-docs-nav">
+    <div class="container">
+        <div class="navbar-header responsive-logo">
+            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse"
+                    data-target="#bs-navbar-collapse"><span class="sr-only">Navegación</span> <span
+                        class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button>
+            <div class="navbar-brand logo"><a href="http://ariansen.pe"><img src="images/broker-seguros-allemant.png"
+                                                                             alt="Asegura tu futuro"></a></div>
+        </div>
+        <nav class="navbar-collapse collapse" id="bs-navbar-collapse">
+            <ul class="nav navbar-nav navbar-right responsive-nav main-nav-list">
+                <li><a href="#broker-seguros">Nosotros</a></li>
+                <li><a href="#seguro-personas">Seguro para Personas</a></li>
+                <li><a href="./seguro-para-empresas/">Seguro para Empresas</a></li>
+                <li><a href="#seguro-beneficios">Beneficios</a></li>
+                <li><a href="#seguro-personas-contratar">Contacto</a></li>
+                <li>
+                    <a href="#">
+                        <button class="btn btn-primary red-btn" data-action="show-quote-popup"
+                                data-quote-key="soat-insurance">SOAT
+                        </button>
+                    </a>
+                </li>
+                <li>
+                    <a href="./seguro-hogar">
+                        <button class="btn btn-primary red-btn">SEGURO HOGAR</button>
+                    </a>
+                </li>
+                <!--<li><a href="tel:015148600">Llámanos</a></li>-->
+            </ul>
+        </nav>
+    </div>
+</nav>
+<section class="vehiculo" style="background: url(images/slider/seguro-vehicular.jpg);">
+    <div class="container"
+         style="text-transform: uppercase;text-align: center; background: #c04b3f;width:  65%;color: #ffffff;border-radius: 5px 5px 0px 0px;text-shadow: 0px 1px 3px #0c0909;">
+        <strong>Completa el formulario y cotiza al instante</strong></div>
+    <div class="container"
+         style="text-align: left;width: 65%;font-size: 14.2px;background: white;box-shadow: 0px 5px 5px 0px black;">
+        <br>
+        <form method="post" action="contacto/">
 
-        <div class="row">
 
             <div class="col-sm-auto col-md-12 col-lg-6">
-                <h5>DATOS DEL VEHÍCULO</h5>
+                <h5 style="color: #c73935;">DATOS DEL VEHÍCULO</h5>
+                <hr style="border: 1px solid #cb3a36;">
                 <div class="form-group">
                     <label>Marca</label>
                     <select class="form-control" id="s-marca" name="vehiculo_marca" required="required">
@@ -41,12 +105,14 @@
                         <br>
                         <div class="form-check form-check-inline">
                             <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="vehiculo_uso" id="inlineRadio1" value="option1" required="required"> Si
+                                <input class="form-check-input" type="radio" name="vehiculo_uso" id="inlineRadio1"
+                                       value="option1" required="required"> Si
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
                             <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="vehiculo_uso" id="inlineRadio2" value="option2" required="required"> No
+                                <input class="form-check-input" type="radio" name="vehiculo_uso" id="inlineRadio2"
+                                       value="option2" required="required"> No
                             </label>
                         </div>
                     </div>
@@ -61,7 +127,8 @@
                 <div class="form-group">
                     <label>Valor comercial</label>
                     <span id="valor-comercial"></span>
-                    <input type="range" min="1" max="100" value="100" class="slider" id="r-valor-com" name="vehiculo_valor" required="required">
+                    <input type="range" min="1" max="100" value="100" class="slider" id="r-valor-com"
+                           name="vehiculo_valor" required="required">
                     <div>
                         <div class="float-left"><span id="valor-comercial-min"></span></div>
                         <div class="float-right"><span id="valor-comercial-max"></span></div>
@@ -70,7 +137,8 @@
             </div>
             <!--SEGUNDA COLUMNA PARA DATOS DEL CONDUCTOR-->
             <div class="col-sm-auto col-md-12 col-lg-6">
-                <h5>DATOS DEL CLIENTE</h5>
+                <h5 style="color: #3a82b6;">DATOS DEL CLIENTE</h5>
+                <hr style="border: 1px solid #3a82b6;">
                 <div class="form-group">
                     <label>Nombre</label>
                     <input class="form-control" name="conductor_nombres" required="required">
@@ -97,12 +165,14 @@
                         <br>
                         <div class="form-check form-check-inline">
                             <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="conductor_sexo" id="inlineRadio1" value="F" required="required"> Femenino
+                                <input class="form-check-input" type="radio" name="conductor_sexo" id="inlineRadio1"
+                                       value="F" required="required"> Femenino
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
                             <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="conductor_sexo" id="inlineRadio2" value="M" required="required"> Masculino
+                                <input class="form-check-input" type="radio" name="conductor_sexo" id="inlineRadio2"
+                                       value="M" required="required"> Masculino
                             </label>
                         </div>
                     </div>
@@ -113,17 +183,39 @@
                 </div>
                 <div class="form-group">
                     <label>Correo electrónico</label>
-                    <input  type="email" class="form-control" name="conductor_correo" required="required">
+                    <input type="email" class="form-control" name="conductor_correo" required="required">
                 </div>
-                <div class="form-group">
-                    <button class="btn btn-primary" value="Cotizar">Cotizar</button>
+                <div class="form-group" style="float: right">
+                    <button class="btn btn-primary" value="Cotizar">COTIZAR</button>
                 </div>
             </div>
 
+
+        </form>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="copyright">
+            <ul class="social">
+                <li><a href="https://www.facebook.com/Ariansen-Allemant-Corredores-De-Seguros-1002865673065745/"
+                       target="_blank"><i class="icon-facebook"></i></a></li>
+                <li><a href="#"><i class="icon-twitter-alt"></i></a></li>
+                <li><a href="#"><i class="icon-linkedin"></i></a></li>
+            </ul>
+            ©2016 Ariansen Allemant
         </div>
+    </div>
+    <!-- / END CONTAINER -->
+</footer>
+<!-- / END FOOOTER  -->
+<!-- SCRIPTS -->
+{#<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>#}
+{#<script src="js/bootstrap.min.js"></script>#}
+<script src="{{ base_url ("assets/js/jquery.nav.js") }}"></script>
 
-
-    </form>
-</div>
+<script src={{ base_url("assets/js/zerif.js") }}></script>
 </body>
+
 </html>
