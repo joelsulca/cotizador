@@ -70,7 +70,7 @@
             </div>
             <!--SEGUNDA COLUMNA PARA DATOS DEL CONDUCTOR-->
             <div class="col-sm-auto col-md-12 col-lg-6">
-                <h5>DATOS DEL CONDUCTOR</h5>
+                <h5>DATOS DEL CLIENTE</h5>
                 <div class="form-group">
                     <label>Nombre</label>
                     <input class="form-control" name="conductor_nombres" required="required">
@@ -83,7 +83,7 @@
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label>DNI</label>
-                            <input class="form-control" name="conductor_dni" required="required">
+                            <input class="form-control" name="conductor_dni" required="required" maxlength="8">
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -107,13 +107,13 @@
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        <label>Movil</label>
+                        <label>Teléfono</label>
                         <input class="form-control" name="conductor_celular" required="required">
                     </div>
                 </div>
                 <div class="form-group">
                     <label>Correo electrónico</label>
-                    <input class="form-control" name="conductor_correo" required="required">
+                    <input  type="email" class="form-control" name="conductor_correo" required="required">
                 </div>
                 <div class="form-group">
                     <button class="btn btn-primary" value="Cotizar">Cotizar</button>
