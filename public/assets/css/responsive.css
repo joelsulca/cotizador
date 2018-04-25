@@ -8,7 +8,14 @@
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
-    
+
+	.width-form {
+		width: inherit !important;
+	}
+    .btn-cotizar {
+        float: none !important;
+        text-align: center;
+    }
     
     /* TOP BAR ELEMENTS */    
 	.responsive-logo {
@@ -104,6 +111,15 @@
 	}
 }
 @media (max-width: 1024px) {
+    .width-form {
+        width: inherit !important;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .btn-cotizar {
+        float: none !important;
+        text-align: center;
+    }
     .features {
         text-align: center;
     }

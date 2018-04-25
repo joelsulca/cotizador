@@ -36,3 +36,10 @@
     background: #ff2f27;
     cursor: pointer;
 }
+.width-form {
+    width: 65%;
+}
+
+.btn-cotizar {
+    float: right;
+}
