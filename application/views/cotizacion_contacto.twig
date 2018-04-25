@@ -5,8 +5,8 @@
     <title>Cotizador de seguros - autos</title>
     <link rel="stylesheet" href="{{ base_url("assets/css/bootstrap.min.css") }}">
     <!-- STYLESHEETS  -->
-    <link rel="stylesheet" href="{{ base_url("assets/css/animate.min.css") }}">
-    <link rel="stylesheet" href="{{ base_url("assets/icon-fonts/styles.css")}}">
+    {#<link rel="stylesheet" href="{{ base_url("assets/css/animate.min.css") }}">#}
+    <link rel="stylesheet" href="{{ base_url("assets/icon-fonts/styles.css") }}">
     <!-- CUSTOM STYLES -->
     <link rel="stylesheet" href="{{ base_url("assets/css/styles.css") }}">
     <link rel="stylesheet" href="{{ base_url("assets/css/responsive.css") }}">
@@ -14,13 +14,17 @@
     {#<script src="{{ base_url("assets/js/bootstrap.min.js") }}"></script>#}
 
     <link rel="stylesheet" href="{{ base_url("assets/css/vehiculo.css") }}">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{{ base_url("assets/js/bootstrap.min.js") }}"></script>
     <script src="{{ base_url("assets/js/cotizador.js") }}"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Seguros, Corredor, Ariansen, Allemant, Worker, corredores de seguros, seguros, seguro vehicular, soat, seguros de hogar, seguros de salud, seguro de vida, seguro de viajes, seguro soat, soat, pacifico, rimac, positiva">
+    <meta name="author" content="Ariansen">
 </head>
 <body>
-<div class="preloader">
-    <div class="status">&nbsp;</div>
-</div>
+{#<div class="preloader">#}
+{#<div class="status">&nbsp;</div>#}
+{#</div>#}
 <div class="container-fluid"
      style="height:40px; background-color:#D80027; font-family: 'Signika', sans-serif;  color:#fff">
     <div class="container">
@@ -43,8 +47,9 @@
             <button class="navbar-toggle collapsed" type="button" data-toggle="collapse"
                     data-target="#bs-navbar-collapse"><span class="sr-only">Navegación</span> <span
                         class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button>
-            <div class="navbar-brand logo"><a href="http://ariansen.pe"><img src="http://ariansen.pe/images/broker-seguros-allemant.png"
-                                                                             alt="Asegura tu futuro"></a></div>
+            <div class="navbar-brand logo"><a href="http://ariansen.pe"><img
+                            src="http://ariansen.pe/images/broker-seguros-allemant.png"
+                            alt="Asegura tu futuro"></a></div>
         </div>
         <nav class="navbar-collapse collapse" id="bs-navbar-collapse">
             <ul class="nav navbar-nav navbar-right responsive-nav main-nav-list">
@@ -70,6 +75,7 @@
         </nav>
     </div>
 </nav>
+
 <section class="vehiculo" style="background: url('http://ariansen.pe/images/slider/seguro-vehicular.jpg')">
     <div class="container"
          style="text-transform: uppercase;text-align: center; background: #c04b3f;width:  65%;color: #ffffff;border-radius: 5px 5px 0px 0px;text-shadow: 0px 1px 3px #0c0909;">
@@ -79,114 +85,115 @@
         <br>
         <form method="post" action="contacto/">
 
-
-            <div class="col-sm-auto col-md-12 col-lg-6">
-                <h5 style="color: #c73935;">DATOS DEL VEHÍCULO</h5>
-                <hr style="border: 1px solid #cb3a36;">
-                <div class="form-group">
-                    <label>Marca</label>
-                    <select class="form-control" id="s-marca" name="vehiculo_marca" required="required">
-                        <option value="" selected="selected">Seleccione</option>
-                        {% for marca in marcas %}
-                            <option value="{{ marca.id }}">{{ marca.nombre }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Modelo</label>
-                    <select class="form-control" id="s-modelo" name="vehiculo_modelo" required="required">
-                        <option value="" selected="selected">Seleccione</option>
-                    </select>
-                </div>
-                <div class="form-group row">
-
-                    <div class="col-lg-6">
-                        <label>Uso particular</label>
-                        <br>
-                        <div class="form-check form-check-inline">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="vehiculo_uso" id="inlineRadio1"
-                                       value="option1" required="required"> Si
-                            </label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="vehiculo_uso" id="inlineRadio2"
-                                       value="option2" required="required"> No
-                            </label>
-                        </div>
+            <div class="row">
+                <div class="col-sm-auto col-md-12 col-lg-6">
+                    <h5 style="color: #c73935;">DATOS DEL VEHÍCULO</h5>
+                    <hr style="border: 1px solid #cb3a36;">
+                    <div class="form-group">
+                        <label>Marca</label>
+                        <select class="form-control" id="s-marca" name="vehiculo_marca" required="required">
+                            <option value="" selected="selected">Seleccione</option>
+                            {% for marca in marcas %}
+                                <option value="{{ marca.id }}">{{ marca.nombre }}</option>
+                            {% endfor %}
+                        </select>
                     </div>
-                    <div class="col-lg-6">
-                        <label>Año de fabricación</label>
-                        <select class="form-control" name="vehiculo_annio" required="required" id="s-annio">
+                    <div class="form-group">
+                        <label>Modelo</label>
+                        <select class="form-control" id="s-modelo" name="vehiculo_modelo" required="required">
                             <option value="" selected="selected">Seleccione</option>
                         </select>
                     </div>
-                </div>
-                <!-- TODO AQUI DEBE CALCULAR HACIA ABAJO Y HACIA ARRIBA 10%, DE ACUERDO AL VALOR DE LA MARCA DEL CARRO-->
-                <div class="form-group">
-                    <label>Valor comercial</label>
-                    <span id="valor-comercial"></span>
-                    <input type="range" min="1" max="100" value="100" class="slider" id="r-valor-com"
-                           name="vehiculo_valor" required="required">
-                    <div>
-                        <div class="float-left" style="float: left;"><span id="valor-comercial-min"></span></div>
-                        <div class="float-right" style="float: right;"><span id="valor-comercial-max"></span></div>
-                    </div>
-                </div>
-            </div>
-            <!--SEGUNDA COLUMNA PARA DATOS DEL CONDUCTOR-->
-            <div class="col-sm-auto col-md-12 col-lg-6">
-                <h5 style="color: #3a82b6;">DATOS DEL CLIENTE</h5>
-                <hr style="border: 1px solid #3a82b6;">
-                <div class="form-group">
-                    <label>Nombre</label>
-                    <input class="form-control" name="conductor_nombres" required="required">
-                </div>
-                <div class="form-group">
-                    <label>Apellidos</label>
-                    <input class="form-control" name="conductor_apellidos" required="required">
-                </div>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="form-group">
-                            <label>DNI</label>
-                            <input class="form-control" name="conductor_dni" required="required" maxlength="8">
+                    <div class="form-group row">
+
+                        <div class="col-lg-6">
+                            <label>Uso particular</label>
+                            <br>
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="vehiculo_uso" id="inlineRadio1"
+                                           value="option1" required="required"> Si
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="vehiculo_uso" id="inlineRadio2"
+                                           value="option2" required="required"> No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <label>Año de fabricación</label>
+                            <select class="form-control" name="vehiculo_annio" required="required" id="s-annio">
+                                <option value="" selected="selected">Seleccione</option>
+                            </select>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="form-group">
-                            <label>Fecha de nacimiento:</label>
-                            <input class="form-control" type="date" name="conductor_fec_nac" required="required">
+                    <!-- TODO AQUI DEBE CALCULAR HACIA ABAJO Y HACIA ARRIBA 10%, DE ACUERDO AL VALOR DE LA MARCA DEL CARRO-->
+                    <div class="form-group">
+                        <label>Valor comercial</label>
+                        <span id="valor-comercial"></span>
+                        <input type="range" min="1" max="100" value="100" class="slider" id="r-valor-com"
+                               name="vehiculo_valor" required="required">
+                        <div>
+                            <div class="float-left" style="float: left;"><span id="valor-comercial-min"></span></div>
+                            <div class="float-right" style="float: right;"><span id="valor-comercial-max"></span></div>
                         </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <label>Sexo</label>
-                        <br>
-                        <div class="form-check form-check-inline">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="conductor_sexo" id="inlineRadio1"
-                                       value="F" required="required"> Femenino
-                            </label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="conductor_sexo" id="inlineRadio2"
-                                       value="M" required="required"> Masculino
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <label>Teléfono</label>
-                        <input class="form-control" name="conductor_celular" required="required">
                     </div>
                 </div>
-                <div class="form-group">
-                    <label>Correo electrónico</label>
-                    <input type="email" class="form-control" name="conductor_correo" required="required">
-                </div>
-                <div class="form-group" style="float: right">
-                    <button class="btn btn-primary" value="Cotizar">COTIZAR</button>
+                <!--SEGUNDA COLUMNA PARA DATOS DEL CONDUCTOR-->
+                <div class="col-sm-auto col-md-12 col-lg-6">
+                    <h5 style="color: #3a82b6;">DATOS DEL CLIENTE</h5>
+                    <hr style="border: 1px solid #3a82b6;">
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input class="form-control" name="conductor_nombres" required="required">
+                    </div>
+                    <div class="form-group">
+                        <label>Apellidos</label>
+                        <input class="form-control" name="conductor_apellidos" required="required">
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>DNI</label>
+                                <input class="form-control" name="conductor_dni" required="required" maxlength="8">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Fecha de nacimiento:</label>
+                                <input class="form-control" type="date" name="conductor_fec_nac" required="required">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <label>Sexo</label>
+                            <br>
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="conductor_sexo" id="inlineRadio1"
+                                           value="F" required="required"> Femenino
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="conductor_sexo" id="inlineRadio2"
+                                           value="M" required="required"> Masculino
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <label>Teléfono</label>
+                            <input class="form-control" name="conductor_celular" required="required">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Correo electrónico</label>
+                        <input type="email" class="form-control" name="conductor_correo" required="required">
+                    </div>
+                    <div class="form-group" style="float: right">
+                        <button class="btn btn-primary" value="Cotizar">COTIZAR</button>
+                    </div>
                 </div>
             </div>
 
@@ -194,7 +201,6 @@
         </form>
     </div>
 </section>
-
 <footer>
     <div class="container">
         <div class="copyright">
@@ -212,13 +218,10 @@
 <!-- / END FOOOTER  -->
 <!-- SCRIPTS -->
 
+{#<script src="{{ base_url ("assets/js/jquery.nav.js") }}"></script>#}
 
-<script src="{{ base_url("assets/js/bootstrap.min.js") }}"></script>
-<script src="{{ base_url ("assets/js/jquery.nav.js") }}"></script>
-
-<script src={{ base_url("assets/js/zerif.js") }}></script>
+{#<script src={{ base_url("assets/js/zerif.js") }}></script>#}
 {#<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>#}
-
 </body>
 
 </html>
