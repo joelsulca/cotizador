@@ -39,13 +39,13 @@ $(document).ready(function () {
     }
 
     function set_valor_comercial(costo) {
-        $('#r-valor-com').attr('value', costo);
+
         var porcentual_valor = Math.round(costo * 0.1);
         var valor_min = costo-porcentual_valor;
         var valor_max = costo+porcentual_valor;
         $('#r-valor-com').attr('min', valor_min);
         $('#r-valor-com').attr('max', valor_max);
-        $('#r-valor-com').attr('value', costo);
+        $('#r-valor-com').val(costo);
         $('#r-valor-com').show();
         $('#valor-comercial-min').html('<b>$ '+ format_valor(valor_min) +'</b>');
         $('#valor-comercial-max').html('<b>$ '+ format_valor(valor_max) +'</b>');
