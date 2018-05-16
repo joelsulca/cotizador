@@ -1,14 +1,82 @@
-<h1>Aquí le tenemos el mejor precio</h1>
-<br>
-<br>
-<br>
-<p>
-    Sr. {{ cotizacion.conductor_nombres }} {{ cotizacion.conductor_apellidos }}
-</p>
-<p>
-    Tenemos el mejor precio para Usted.
-</p>
-<br>
-<p>
-    En 4 cuotas:     $ {{ cotizacion.vehiculo_valor_comercial / 4 }}
-</p>
+{% extends 'main.twig' %}
+{% block content %}
+<section class="vehiculo" style="background: url('http://ariansen.pe/images/slider/seguro-vehicular.jpg')">
+    <h3>COTIZACIÓN SEGURO VEHICULAR - LA MEJOR OPCIÓN </h3>
+    <br>
+    Cotización Nro. {{ "%07d"|format(cotizacion.id) }}
+    <br>
+    <div class="form-group btn-cotizar">
+        <a class="btn btn-danger" href="/cotizador/">TE LLAMAMOS</a>
+    </div>
+    <br>
+    <table class="table table-bordered table-responsive" style="color: white!important;">
+        <tbody>
+            <tr> <td colspan="6">CARACTERÍSTICAS DEL VEHÍCULO</td></tr>
+            <tr style="text-align: left">
+                <td>
+                    MARCA:	{{ cotizacion.marca }} <br>
+                    MODELO:	{{ cotizacion.modelo }}<br>
+                    AÑO:	{{ cotizacion.anio }}<br>
+                    VALOR CONVENIDO:	$ {{ cotizacion.vehiculo_valor_comercial }}<br>
+                    El monto divido en 4 *
+
+                </td>
+            </tr>
+            {% for empresa_info in empresas_info %}
+                {% set prima= cotizacion.vehiculo_valor_comercial * empresa_info.tasa %}
+                <tr><td>COMPAÑÍA</td>
+                    <td>PRIMA ANUAL<br>(INC IGV)</td>
+                    <td>COBERTURAS</td>	<td>ASISTENCIAS</td><td>DEDUCIBLES</td>
+                    <td>¿REQUIERE GPS?</td></tr>
+                <tr>
+                    <td>{{ empresa_info.nombre }}</td>
+                    <td>
+                    {% if prima > 350 %}
+                        $ {{ prima }}
+                    {% else %}
+                        $ 350
+                    {% endif %}
+                        <br>
+                        *CUOTA MENSUAL<br>
+                        (4 MESES)<br>
+                        $ {{ prima / 4 }}
+                    </td>
+                    <td>
+                        DAÑO PROPIO <br>
+                        Hasta el valor convenido $ {{ cotizacion.vehiculo_valor_comercial }}<br>
+                        RESPONSABILIDAD CIVIL<br>
+                        Hasta $150,000<br>
+                        <a href="#" >Ver Detalles</a>
+                    </td>
+                    <td>
+                        CHOFER DE REEMPLAZO<br>
+                        Hasta 3 veces al año<br>
+                        AUXILIO MECANICO<br>
+                        24 horas<br>
+                        <a href="#" >Ver Detalles</a>
+                    </td>
+                    <td>
+                        TALLERES AFILIADOS<br>
+                        15% Minimo $150<br>
+                        TALLERES MULTIMARCA<br>
+                        10% Minimo $150<br>
+                        <a href="#" >Ver Detalles</a>
+                    </td>
+                    <td>
+                        {% if cotizacion.vehiculo_valor_comercial > 50000 %}
+                            SI
+                        {% elseif empresa_info.gps == 1 %}
+                            SI
+                        {% else %}
+                            NO
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="form-group btn-cotizar">
+        <a class="btn btn-primary" href="/cotizador/">COTIZA OTRO VEHÍCULO</a>
+    </div>
+</section>
+{% endblock %}

@@ -50,8 +50,8 @@ class Cotizador_Model extends CI_Model
     public function get_cotizacion($id)
     {
         $query = $this->db
-            ->query("select cc.id, cc.conductor_apellidos, cc.conductor_celular, cc.conductor_correo, cc.conductor_dni,
-cc.conductor_nombres, cc.conductor_sexo, cc.fecha_creacion, cc.vehiculo_anio_fabricacion_id,
+            ->query("select cc.vehiculo_modelo_id,cc.vehiculo_marca_id, cc.id, cc.conductor_apellidos, cc.conductor_celular, cc.conductor_correo, cc.conductor_dni,
+cc.conductor_nombres, cc.conductor_sexo, cc.fecha_creacion, cc.vehiculo_anio_fabricacion_id, cc.vehiculo_anio_fabricacion_id as anio,
 cc.vehiculo_valor_comercial, mm.nombre as marca, m.nombre as modelo
 from cotizacion_contacto cc inner join modelo m 
 on m.id = cc.vehiculo_modelo_id and m.marca_id = cc.vehiculo_marca_id
@@ -59,5 +59,18 @@ inner join marca mm
 on mm.id = cc.vehiculo_marca_id where cc.id = $id");
 
         return $query->row_object();
+    }
+
+    public function get_cotizacion_info_by_auto($marca, $modelo, $anio)
+    {
+        $query = $this->db
+            ->query("select e.nombre, ec.gps, ec.tasa
+                from empresa_auto_info_cotizacion ec 
+                inner join empresa e
+                on e.id = ec.empresa_id 
+                where ec.vehiculo_anio_fabricacion_id=$anio 
+                and ec.vehiculo_marca_id=$marca and ec.vehiculo_modelo_id=$modelo");
+
+        return $query->result_object();
     }
 }

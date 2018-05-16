@@ -31,9 +31,16 @@ class Cotizador extends CI_Controller {
     {
         $this->load->library('twig');
         $this->load->model('Cotizador_Model');
-        $cotizacion = $this->Cotizador_Model->get_cotizacion($contacto_id) ;
-        $data = array('cotizacion' => $cotizacion);
-        $this->twig->display('cotizacion', $data);
+        $contacto_id = $this->contacto_token($contacto_id, 2);
+        if($contacto_id) {
+            $cotizacion = $this->Cotizador_Model->get_cotizacion($contacto_id);
+            $empresas_info = $this->Cotizador_Model->get_cotizacion_info_by_auto($cotizacion->vehiculo_marca_id,
+                $cotizacion->vehiculo_modelo_id, $cotizacion->vehiculo_anio_fabricacion_id);
+            $data = array('cotizacion' => $cotizacion, 'empresas_info' => $empresas_info);
+            $this->twig->display('cotizacion', $data);
+        }else{
+            redirect("/cotizador/cotizacion_error/", 'refresh', 200);
+        }
     }
 
     public function contacto()
@@ -46,11 +53,25 @@ class Cotizador extends CI_Controller {
             $cotizacion = $this->Cotizador_Model->get_cotizacion($id) ;
 
             if($id && $this->_send_mail($cotizacion)) {
+                $id = $this->contacto_token($id, 1);
                 redirect("/cotizador/cotizacion/$id", 'refresh', 200);
             }
         }
 
         redirect("/cotizador/cotizacion_error/", 'refresh', 200);
+    }
+
+    private function contacto_token($value, $mode)
+    {
+        $this->load->library('encryption');
+        $this->encryption->initialize(
+            array(
+                'cipher' => 'aes-256',
+                'mode' => 'ctr',
+                'key' => $this->config->item('encryption_key')
+            )
+        );
+        return $mode === 1 ? $this->encryption->encrypt($value) : $this->encryption->decrypt($value);
     }
 
     public function cotizacion_error()

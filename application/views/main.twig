@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Cotizador de seguros - autos</title>
+    <link rel="stylesheet" href="{{ base_url("assets/css/bootstrap.min.css") }}">
+    <!-- STYLESHEETS  -->
+    {#<link rel="stylesheet" href="{{ base_url("assets/css/animate.min.css") }}">#}
+    <link rel="stylesheet" href="{{ base_url("assets/icon-fonts/styles.css") }}">
+    <!-- CUSTOM STYLES -->
+    <link rel="stylesheet" href="{{ base_url("assets/css/styles.css") }}">
+    <link rel="stylesheet" href="{{ base_url("assets/css/responsive.css") }}">
+    <link rel="stylesheet" href="{{ base_url("assets/css/others.css") }}">
+    {#<script src="{{ base_url("assets/js/bootstrap.min.js") }}"></script>#}
+
+    <link rel="stylesheet" href="{{ base_url("assets/css/vehiculo.css") }}">
+    <script src="{{ base_url("assets/js/jquery.min.js") }}"></script>
+    {#<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>#}
+    <script src="{{ base_url("assets/js/bootstrap.min.js") }}"></script>
+    <script src="{{ base_url("assets/js/cotizador.js") }}"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Seguros, Corredor, Ariansen, Allemant, Worker, corredores de seguros, seguros, seguro vehicular, soat, seguros de hogar, seguros de salud, seguro de vida, seguro de viajes, seguro soat, soat, pacifico, rimac, positiva">
+    <meta name="author" content="Ariansen">
+</head>
+<body>
+{% include 'includes/header.twig' %}
+{% block content %}{% endblock %}
+{% include 'includes/footer.twig' %}
+</body>
