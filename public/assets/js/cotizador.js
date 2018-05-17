@@ -83,3 +83,17 @@ $(document).ready(function () {
         show_valor_comercial(this.value);
     });
 });
+
+function get_modal(modal) {
+    if (modal) {
+        var $modal = $('#cotModal');
+        $.ajax({
+            url: window.location.pathname +'/?modal=' + modal,
+            success: function (response) {
+                $modal.find('#cotModal-title').text(modal.replace('_', ' ').toUpperCase());
+                $modal.find('#cotModal-body').html(response);
+                $modal.modal('show');
+            }
+        });
+    }
+}

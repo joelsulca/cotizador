@@ -132,3 +132,19 @@ input[type=range]:focus::-ms-fill-lower {
 input[type=range]:focus::-ms-fill-upper {
     background: #D80027;
 }
+
+table.modal-table {
+    font-size: 12px;
+    border: 1px solid #CCC;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.modal-table td {
+    padding: 4px;
+    margin: 3px;
+    border: 1px solid #CCC;
+}
+.modal-table th {
+    background-color: #104E8B;
+    color: #FFF;
+    font-weight: bold;
+}

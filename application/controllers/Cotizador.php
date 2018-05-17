@@ -32,12 +32,20 @@ class Cotizador extends CI_Controller {
         $this->load->library('twig');
         $this->load->model('Cotizador_Model');
         $contacto_id = $this->contacto_token($contacto_id, 2);
+        $modal = in_array($this->input->get('modal'), array('asistencia', 'cobertura', 'deducible', 'contacto_telefonico'))?
+            $this->input->get('modal'):false;
+
         if($contacto_id) {
             $cotizacion = $this->Cotizador_Model->get_cotizacion($contacto_id);
-            $empresas_info = $this->Cotizador_Model->get_cotizacion_info_by_auto($cotizacion->vehiculo_marca_id,
-                $cotizacion->vehiculo_modelo_id, $cotizacion->vehiculo_anio_fabricacion_id);
-            $data = array('cotizacion' => $cotizacion, 'empresas_info' => $empresas_info);
-            $this->twig->display('cotizacion', $data);
+
+            if($modal){
+                $this->get_modal($cotizacion, $modal);
+            }else {
+                $empresas_info = $this->Cotizador_Model->get_cotizacion_info_by_auto($cotizacion->vehiculo_marca_id,
+                    $cotizacion->vehiculo_modelo_id, $cotizacion->vehiculo_anio_fabricacion_id);
+                $data = array('cotizacion' => $cotizacion, 'empresas_info' => $empresas_info);
+                $this->twig->display('cotizacion', $data);
+            }
         }else{
             redirect("/cotizador/cotizacion_error/", 'refresh', 200);
         }
@@ -93,4 +101,11 @@ class Cotizador extends CI_Controller {
         $r2 = $this->sendgridci->sendHtmlMail('ariansen.cliente@gmail.com', "ariansen1@gmail.com", "Cotizacion Ariansen de $nombres", $mail);
         return $r1 & $r2;
     }
+
+    private function get_modal($cotizacion, $modal){
+        $this->load->library('twig');
+        $html  = $this->twig->render("modals/$modal", array('cotizacion' => $cotizacion));
+        echo $html;
+    }
+
 }
