@@ -32,7 +32,7 @@ class Cotizador extends CI_Controller {
         $this->load->library('twig');
         $this->load->model('Cotizador_Model');
 
-        $contacto_id = $this->contacto_token( substr($contacto_id, -1), substr($contacto_id,0, strlen($contacto_id)-1), 2);
+        $contacto_id = $this->contacto_token( substr($contacto_id, 32-strlen($contacto_id)), substr($contacto_id,0, 32), 2);
 
         $modal = in_array($this->input->get('modal'), array('asistencia', 'cobertura', 'deducible', 'contacto_telefonico'))?
             $this->input->get('modal'):false;
