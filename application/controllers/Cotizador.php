@@ -3,8 +3,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Cotizador extends CI_Controller {
 
-	public function index()
-	{
+    public function index()
+    {
         $this->load->model('Cotizador_Model');
         $this->load->library('twig');
         $marcas = $this->Cotizador_Model->get_marcas();
@@ -31,7 +31,9 @@ class Cotizador extends CI_Controller {
     {
         $this->load->library('twig');
         $this->load->model('Cotizador_Model');
-        $contacto_id = $this->contacto_token($contacto_id, 2);
+
+        $contacto_id = $this->contacto_token( substr($contacto_id, -1), substr($contacto_id,0, strlen($contacto_id)-1), 2);
+
         $modal = in_array($this->input->get('modal'), array('asistencia', 'cobertura', 'deducible', 'contacto_telefonico'))?
             $this->input->get('modal'):false;
 
@@ -61,7 +63,7 @@ class Cotizador extends CI_Controller {
             $cotizacion = $this->Cotizador_Model->get_cotizacion($id) ;
 
             if($id && $this->_send_mail($cotizacion)) {
-                $id = $this->contacto_token($id, 1);
+                $id = $this->contacto_token($id, null, 1);
                 redirect("/cotizador/cotizacion/$id", 'refresh', 200);
             }
         }
@@ -69,17 +71,10 @@ class Cotizador extends CI_Controller {
         redirect("/cotizador/cotizacion_error/", 'refresh', 200);
     }
 
-    private function contacto_token($value, $mode)
+    private function contacto_token($value, $value2, $mode)
     {
-        $this->load->library('encryption');
-        $this->encryption->initialize(
-            array(
-                'cipher' => 'aes-256',
-                'mode' => 'ctr',
-                'key' => $this->config->item('encryption_key')
-            )
-        );
-        return $mode === 1 ? $this->encryption->encrypt($value) : $this->encryption->decrypt($value);
+
+        return $mode === 1 ? md5($value).$value : ((md5($value) === $value2)? $value : false);
     }
 
     public function cotizacion_error()
