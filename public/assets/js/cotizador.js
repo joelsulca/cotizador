@@ -4,7 +4,7 @@ $(document).ready(function () {
         if (marca) {
             $.ajax({
                 dataType: "json",
-                url: 'modelos/' + marca,
+                url: location.pathname + '/modelos/' + marca,
                 success: function (response) {
                     $('#s-modelo').find('option').remove();
 
@@ -22,7 +22,7 @@ $(document).ready(function () {
         if (modelo) {
             $.ajax({
                 dataType: "json",
-                url: 'annios/' + marca + '/' + modelo,
+                url: location.pathname + '/annios/' + marca + '/' + modelo,
                 success: function (response) {
                     $('#s-annio').find('option').remove();
 
