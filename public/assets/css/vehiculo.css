@@ -1,7 +1,11 @@
 .color-red {
     color: #ff2f27;
 }
-
+.color-tr-table {
+    background-color: #2b81da;
+    color: white;
+    font-weight: bold;
+}
 
 .slidecontainer {
     width: 100%;

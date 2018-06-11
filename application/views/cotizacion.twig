@@ -2,19 +2,55 @@
 {% block content %}
 {# archivo twig para todos los modals que se usaran en el cotizador #}
 {% include 'includes/modal.twig' %}
-<section class="vehiculo" style="background: url('http://ariansen.pe/images/slider/seguro-vehicular.jpg')">
+<section class="vehiculo">
     <h3>COTIZACIÓN SEGURO VEHICULAR - LA MEJOR OPCIÓN </h3>
-    <br>
+   {# <br>
     Cotización Nro. {{ "%07d"|format(cotizacion.id) }}
-    <br>
+    <br>#}
     <div class="form-group btn-cotizar">
         <button type="button" class="btn btn-danger" onclick="get_modal('contacto_telefonico', 0);">TE LLAMAMOS</button>
     </div>
     <br>
-    <table class="table table-bordered table-responsive" style="color: white!important;">
+    <table cellpadding="0" cellspacing="0" style="text-align: left; font-size:12px; font-family:Helvetica; border-collapse: collapse; width: 100%;">
         <tbody>
-            <tr> <td colspan="6">CARACTERÍSTICAS DEL VEHÍCULO</td></tr>
-            <tr style="text-align: left">
+        <tr>
+            <td style="width: 50%">
+                <table style="width: 100%; font-size:17px">
+                    <tbody>
+                    <tr>
+                        <td style="width: 27%; text-align: center"><img src="http://ariansen.pe/images/broker-seguros-allemant.png"></td>
+                        <td style="width: 73%; font-weight:bold;">Seguro Vehicular
+                            <p>Cotizacion Nro: {{ "%07d"|format(cotizacion.id) }}</p>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+            <td style="width: 50%">
+                <table style="width: 100%; font-size:17px">
+                    <tbody>
+                    <tr>
+                        <td style="font-weight:bold;">Vehiculo:</td>
+                        <td>{{ cotizacion.marca }} {{ cotizacion.modelo }} </td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold;">Año:</td>
+                        <td>{{ cotizacion.anio }}</td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight:bold;">Valor Convenio:</td>
+                        <td>{{ cotizacion.vehiculo_valor_comercial }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <table class="table table-bordered table-responsive">
+        <tbody>
+            {#<tr> <td colspan="6">CARACTERÍSTICAS DEL VEHÍCULO</td></tr>#}
+            {#<tr style="text-align: left">
                 <td>
                     MARCA:	{{ cotizacion.marca }} <br>
                     MODELO:	{{ cotizacion.modelo }}<br>
@@ -23,15 +59,15 @@
                     El monto divido en 4 *
 
                 </td>
-            </tr>
+            </tr>#}
             {% for empresa_info in empresas_info %}
                 {% set prima= cotizacion.vehiculo_valor_comercial * empresa_info.tasa %}
-                <tr><td>COMPAÑÍA</td>
+                <tr class="color-tr-table"><td>COMPAÑÍA</td>
                     <td>PRIMA ANUAL<br>(INC IGV)</td>
                     <td>COBERTURAS</td>	<td>ASISTENCIAS</td><td>DEDUCIBLES</td>
                     <td>¿REQUIERE GPS?</td></tr>
                 <tr>
-                    <td>{{ empresa_info.nombre }}</td>
+                    <td><img src="/assets/images/logo_rimac.png"> </td>
                     <td>
                     {% if prima > 350 %}
                         $ {{ prima }}
