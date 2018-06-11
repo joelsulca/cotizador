@@ -36,12 +36,13 @@ class Cotizador extends CI_Controller {
 
         $modal = in_array($this->input->get('modal'), array('asistencia', 'cobertura', 'deducible', 'contacto_telefonico'))?
             $this->input->get('modal'):false;
+        $empresa = $this->input->get('empresa');
 
         if($contacto_id) {
             $cotizacion = $this->Cotizador_Model->get_cotizacion($contacto_id);
 
             if($modal){
-                $this->get_modal($cotizacion, $modal);
+                $this->get_modal($cotizacion, $modal, $empresa);
             }else {
                 $empresas_info = $this->Cotizador_Model->get_cotizacion_info_by_auto($cotizacion->vehiculo_marca_id,
                     $cotizacion->vehiculo_modelo_id, $cotizacion->vehiculo_anio_fabricacion_id);
@@ -97,9 +98,17 @@ class Cotizador extends CI_Controller {
         return $r1 & $r2;
     }
 
-    private function get_modal($cotizacion, $modal){
+    private function get_modal($cotizacion, $modal, $empresa){
         $this->load->library('twig');
-        $html  = $this->twig->render("modals/$modal", array('cotizacion' => $cotizacion));
+        $data = array('cotizacion' => $cotizacion);
+
+        if($modal==='deducible'){
+            $info = $this->Cotizador_Model->get_deducible_info($cotizacion->vehiculo_marca_id,
+                $cotizacion->vehiculo_modelo_id, $cotizacion->vehiculo_anio_fabricacion_id, $empresa);
+            $data['data'] = $info;
+        }
+
+        $html  = $this->twig->render("modals/$modal", $data);
         echo $html;
     }
 

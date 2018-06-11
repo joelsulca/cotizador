@@ -64,12 +64,29 @@ on mm.id = cc.vehiculo_marca_id where cc.id = $id");
     public function get_cotizacion_info_by_auto($marca, $modelo, $anio)
     {
         $query = $this->db
-            ->query("select e.nombre, ec.gps, ec.tasa
+            ->query("select e.nombre, ec.gps, ec.tasa, e.id
                 from empresa_auto_info_cotizacion ec 
                 inner join empresa e
                 on e.id = ec.empresa_id 
                 where ec.vehiculo_anio_fabricacion_id=$anio 
                 and ec.vehiculo_marca_id=$marca and ec.vehiculo_modelo_id=$modelo");
+
+        return $query->result_object();
+    }
+
+    public function get_deducible_info($marca, $modelo, $anio, $empresa)
+    {
+        $query = $this->db
+            ->query("select d.nombre
+                from empresa_auto_info_cotizacion ec 
+                inner join empresa e
+                on e.id = ec.empresa_id 
+                INNER JOIN deducible d 
+                on d.riesgo_id = ec.riesgo_id
+                where ec.vehiculo_anio_fabricacion_id=$anio
+                and ec.vehiculo_marca_id=$marca and ec.vehiculo_modelo_id=$modelo 
+                AND ec.empresa_id=$empresa
+                order by d.position");
 
         return $query->result_object();
     }

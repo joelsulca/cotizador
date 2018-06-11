@@ -8,7 +8,7 @@
     Cotización Nro. {{ "%07d"|format(cotizacion.id) }}
     <br>
     <div class="form-group btn-cotizar">
-        <button type="button" class="btn btn-danger" onclick="get_modal('contacto_telefonico');">TE LLAMAMOS</button>
+        <button type="button" class="btn btn-danger" onclick="get_modal('contacto_telefonico', 0);">TE LLAMAMOS</button>
     </div>
     <br>
     <table class="table table-bordered table-responsive" style="color: white!important;">
@@ -48,21 +48,21 @@
                         Hasta el valor convenido $ {{ cotizacion.vehiculo_valor_comercial }}<br>
                         RESPONSABILIDAD CIVIL<br>
                         Hasta $150,000<br>
-                        <a href="javascript:get_modal('cobertura');">Ver Detalles</a>
+                        <a href="javascript:get_modal('cobertura', {{ empresa_info.id }});">Ver Detalles</a>
                     </td>
                     <td>
                         CHOFER DE REEMPLAZO<br>
                         Hasta 3 veces al año<br>
                         AUXILIO MECANICO<br>
                         24 horas<br>
-                        <a href="javascript:get_modal('asistencia');">Ver Detalles</a>
+                        <a href="javascript:get_modal('asistencia', {{ empresa_info.id }});">Ver Detalles</a>
                     </td>
                     <td>
                         TALLERES AFILIADOS<br>
                         15% Minimo $150<br>
                         TALLERES MULTIMARCA<br>
                         10% Minimo $150<br>
-                        <a href="javascript:get_modal('deducible');">Ver Detalles</a>
+                        <a href="javascript:get_modal('deducible', {{ empresa_info.id }});">Ver Detalles</a>
                     </td>
                     <td>
                         {% if cotizacion.vehiculo_valor_comercial > 50000 %}
