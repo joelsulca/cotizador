@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tbody>
+    <tr>
+        <td align="center" bgcolor="#EEEEEE" style="padding-bottom: 30px;"><br/>
+            <table style="border: 25px solid #FCFCFC; padding-bottom:40px" width="700" cellspacing="0" cellpadding="0"
+                   align="center">
+                <tbody>
+                <tr>
+                    <td align="center" valign="middle" bgcolor="#EEEEEE">
+                        <table width="700" border="0" cellspacing="0" cellpadding="0">
+                            <tbody>
+                            <tr>
+                                <td align="center" valign="middle" bgcolor="#EEEEEE" width="700"
+                                    style="padding:30px 0 40px">
+                                    <div style="display: inline-block; max-height: 65px; height: 65px; width: auto;
+                                                min-width: 250px; position: relative; overflow: hidden;">
+                                        <a href="#" style="display: block">
+                                            <img src="http://ariansen.pe/images/broker-seguros-allemant.png"
+                                                 height="65px" style="width: auto">
+                                        </a>
+                                    </div>
+                                    {% block header %}{% endblock %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td bgcolor="#EEEEEE" width="700" align="center"
+                                    style="font-family: arial; font-size: 28px; color:#808080;padding: 0 0 50px 0;">
+                                    {% block title %}{% endblock %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center" valign="middle" bgcolor="#EEEEEE">
+                                    {% block summary %}{% endblock %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 29px 60px;">
+                                    {% block address %}{% endblock %}
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

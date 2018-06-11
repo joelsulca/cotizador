@@ -1,0 +1,95 @@
+{% extends 'mails/main.twig' %}
+{% block title %}
+    Cotización Nro. <span style="color:#7ccb4e">{{ "%07d"|format(cotizacion.id) }}</span>
+{% endblock %}
+{% block header %}
+    <br>
+    <br>
+    <span style="font-family: arial; font-size: 28px; color:#808080;">
+                                            Hola {{ cotizacion.conductor_nombres }} {{ cotizacion.conductor_apellidos }},</span><br>
+    <span style="font-family: arial; font-size: 28px; color:#808080;"></span><br>
+
+    <span style="font-family: arial; font-size: 14px;color:#808080;">Te Saluda <strong>Ariansen Allemant</strong>, cuenta con
+    nosotros para asesorarte en la adquisición de tu <strong>Seguro vehicular</strong> para el </span>
+    <span style="font-family: arial; font-size: 14px; color:#7ccb4e;">{{ cotizacion.marca }} {{ cotizacion.modelo }}</span>
+    <span style="font-family: arial; font-size: 14px;color:#808080;">valorizado en $ {{ cotizacion.vehiculo_valor_comercial }}</span>
+    <br>
+
+{% endblock %}
+{% block summary %}
+    <table width="560" bgcolor="#fcfcfc" border="0" cellspacing="0" cellpadding="0"
+           style="color:#898989;font-family: arial; font-size: 16px;">
+        <tbody>
+        <tr>
+            <td colspan="3" width="430"
+                style="border-bottom:2px solid #b4b4b4; padding:15px 10px 15px 15px; font-size: 18px;">
+                Resumen de la cotización
+            </td>
+            <td align="center" width="130"
+                style="border-bottom:2px solid #b4b4b4;  font-size: 16px; padding-bottom: 10px 0;">
+                {{ "now"|date("F d, Y") }}
+            </td>
+        </tr>
+        <!--empresas-->
+        {% for empresa_info in empresas_info %}
+        <tr>
+            <td width="50" style="font-size: 16px;padding: 20px 0 0 15px;">COMPAÑÍA</td>
+            <td align="center" width="100" style="padding-top:20px;">PRIMA ANUAL<br>(INC IGV)</td>
+            <td align="center" width="100" style="padding-top:20px">COBERTURAS</td>
+            <td align="center" width="100" style="padding:20px 35px 0 0">ASISTENCIAS</td>
+            <td align="center" width="100" style="padding:20px 35px 0 0">DEDUCIBLES</td>
+            <td align="center" width="100" style="padding:20px 35px 0 0">¿REQUIERE GPS?</td>
+        </tr>
+
+        <tr>
+            <td valign="top" width="50" style="padding:10px 0 0 15px;">{{ empresa_info.nombre}}
+            </td>
+            <td valign="top" align="center" width="100" style="padding-top: 10px;">
+                {% if prima > 350 %}
+                    $ {{ prima }}
+                {% else %}
+                    $ 350
+                {% endif %}
+                <br>
+                *CUOTA MENSUAL<br>
+                (4 MESES)<br>
+                $ {{ prima / 4 }}
+            </td>
+            <td valign="top" align="center" width="100" style="padding-top: 10px;">
+                DAÑO PROPIO <br>
+                Hasta el valor convenido $ {{ cotizacion.vehiculo_valor_comercial }}<br>
+                RESPONSABILIDAD CIVIL<br>
+                Hasta $150,000<br>
+            </td>
+            <td valign="top" align="center" width="100" style="padding:10px 35px 0 0">
+                CHOFER DE REEMPLAZO<br>
+                Hasta 3 veces al año<br>
+                AUXILIO MECANICO<br>
+                24 horas<br>
+            </td>
+            <td valign="top" align="center" width="100" style="padding:10px 35px 0 0">
+                TALLERES AFILIADOS<br>
+                15% Minimo $150<br>
+                TALLERES MULTIMARCA<br>
+                10% Minimo $150<br>
+            </td>
+            <td valign="top" align="center" width="100" style="padding:10px 35px 0 0">
+                {% if cotizacion.vehiculo_valor_comercial > 50000 %}
+                    SI
+                {% elseif empresa_info.gps == 1 %}
+                    SI
+                {% else %}
+                    NO
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+        <!--End empresas-->
+        <tr>
+            <td valign="top" width="250" style="padding:30px 0">
+                <a href="{{ cotizacion_url }}" target="_blank">Ver Detalles</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+{% endblock %}
