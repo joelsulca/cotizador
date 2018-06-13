@@ -4,7 +4,7 @@ $(document).ready(function () {
         if (marca) {
             $.ajax({
                 dataType: "json",
-                url: base_url + 'cotizador/modelos/' + marca,
+                url: base_url + 'modelos/' + marca,
                 success: function (response) {
                     $('#s-modelo').find('option').remove();
 
@@ -22,7 +22,7 @@ $(document).ready(function () {
         if (modelo) {
             $.ajax({
                 dataType: "json",
-                url: base_url + 'cotizador/annios/' + marca + '/' + modelo,
+                url: base_url + 'annios/' + marca + '/' + modelo,
                 success: function (response) {
                     $('#s-annio').find('option').remove();
 
@@ -88,7 +88,7 @@ function get_modal(modal, empresa) {
     if (modal) {
         var $modal = $('#cotModal');
         $.ajax({
-            url: window.base_url +'cotizador/?modal=' + modal + '&empresa=' +empresa,
+            url: window.base_url +'?modal=' + modal + '&empresa=' +empresa,
             success: function (response) {
                 $modal.find('#cotModal-title').text(modal.replace('_', ' ').toUpperCase());
                 $modal.find('#cotModal-body').html(response);
