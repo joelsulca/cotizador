@@ -17,8 +17,8 @@
 
 {% endblock %}
 {% block summary %}
-    <table width="560" bgcolor="#fcfcfc" border="0" cellspacing="0" cellpadding="0"
-           style="color:#898989;font-family: arial; font-size: 16px;">
+    <table class="table table-responsive" width="640" bgcolor="#fcfcfc" border="0" cellspacing="0" cellpadding="0"
+           style="color:#898989;font-family: arial; font-size: 13px;">
         <tbody>
         <tr>
             <td colspan="3" width="430"
@@ -30,15 +30,16 @@
                 {{ "now"|date("F d, Y") }}
             </td>
         </tr>
+        <br>
         <!--empresas-->
         {% for empresa_info in empresas_info %}
-        <tr>
-            <td width="50" style="font-size: 16px;padding: 20px 0 0 15px;">COMPAÑÍA</td>
-            <td align="center" width="100" style="padding-top:20px;">PRIMA ANUAL<br>(INC IGV)</td>
-            <td align="center" width="100" style="padding-top:20px">COBERTURAS</td>
-            <td align="center" width="100" style="padding:20px 35px 0 0">ASISTENCIAS</td>
-            <td align="center" width="100" style="padding:20px 35px 0 0">DEDUCIBLES</td>
-            <td align="center" width="100" style="padding:20px 35px 0 0">¿REQUIERE GPS?</td>
+        <tr style="background-color: #2b81da;color: white; font-weight: bold;">
+            <td align="center" width="50">COMPAÑÍA</td>
+            <td align="center" width="100">P. ANUAL<br>(INC IGV)</td>
+            <td align="center" width="100">COBERTURAS</td>
+            <td align="center" width="100">ASISTENCIAS</td>
+            <td align="center" width="100">DEDUCIBLES</td>
+            <td align="center" width="100">¿REQUIERE GPS?</td>
         </tr>
 
         <tr>
@@ -61,19 +62,19 @@
                 RESPONSABILIDAD CIVIL<br>
                 Hasta $150,000<br>
             </td>
-            <td valign="top" align="center" width="100" style="padding:10px 35px 0 0">
+            <td valign="top" align="center" width="100" style="padding:10px">
                 CHOFER DE REEMPLAZO<br>
                 Hasta 3 veces al año<br>
                 AUXILIO MECANICO<br>
                 24 horas<br>
             </td>
-            <td valign="top" align="center" width="100" style="padding:10px 35px 0 0">
+            <td valign="top" align="center" width="100" style="padding:10px">
                 TALLERES AFILIADOS<br>
                 15% Minimo $150<br>
                 TALLERES MULTIMARCA<br>
                 10% Minimo $150<br>
             </td>
-            <td valign="top" align="center" width="100" style="padding:10px 35px 0 0">
+            <td valign="top" align="center" width="100" style="padding:10px">
                 {% if cotizacion.vehiculo_valor_comercial > 50000 %}
                     SI
                 {% elseif empresa_info.gps == 1 %}
@@ -85,11 +86,21 @@
         </tr>
         {% endfor %}
         <!--End empresas-->
-        <tr>
+{#        <tr>
             <td valign="top" width="250" style="padding:30px 0">
                 <a href="{{ cotizacion_url }}" target="_blank">Ver Detalles</a>
             </td>
-        </tr>
+        </tr>#}
         </tbody>
     </table>
+    <div style="text-align: center; padding:30px 0">
+        <a href="{{ cotizacion_url }}" target="_blank" style="text-transform: uppercase;
+    padding: 15px 15px 15px 15px;
+    border-radius: 5px;
+    background: #0070ba;
+    color: white;
+    text-decoration: none;
+    font-weight: bold">Ver Detalles</a>
+
+    </div>
 {% endblock %}
