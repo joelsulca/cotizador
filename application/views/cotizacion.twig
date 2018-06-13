@@ -61,7 +61,7 @@
                 </td>
             </tr>#}
             {% for empresa_info in empresas_info %}
-                {% set prima= cotizacion.vehiculo_valor_comercial * empresa_info.tasa %}
+                {% set prima= prima_comercial(cotizacion.vehiculo_valor_comercial, empresa_info.tasa) %}
                 <tr class="color-tr-table"><td>COMPAÑÍA</td>
                     <td>PRIMA ANUAL<br>(INC IGV)</td>
                     <td>COBERTURAS</td>	<td>ASISTENCIAS</td><td>DEDUCIBLES</td>

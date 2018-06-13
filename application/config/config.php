@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'https://ariansen.herokuapp.com/';
+$config['base_url'] = 'http://127.0.0.1:8000';
 
 /*
 |--------------------------------------------------------------------------
@@ -158,7 +158,7 @@ $config['composer_autoload'] = realpath(APPPATH . '../vendor/autoload.php');
 | DO NOT CHANGE THIS UNLESS YOU FULLY UNDERSTAND THE REPERCUSSIONS!!
 |
 */
-$config['permitted_uri_chars'] = 'a-z 0-9~%.:_\-=+-';
+$config['permitted_uri_chars'] = 'a-z 0-9~%.:_\-';
 
 /*
 |--------------------------------------------------------------------------
@@ -521,3 +521,5 @@ $config['rewrite_short_tags'] = FALSE;
 | Array:		array('10.0.1.200', '192.168.5.0/24')
 */
 $config['proxy_ips'] = '';
+
+$config['factor_anual'] = 1.2154;

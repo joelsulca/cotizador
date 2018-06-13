@@ -27,7 +27,7 @@ class Twig
      * @var array Functions to add to Twig
      */
     private $functions_asis = [
-        'base_url', 'site_url',
+        'base_url', 'site_url', 'prima_comercial',
     ];
     /**
      * @var array Functions with `is_safe` option

@@ -33,6 +33,7 @@
         <br>
         <!--empresas-->
         {% for empresa_info in empresas_info %}
+            {% set prima= prima_comercial(cotizacion.vehiculo_valor_comercial, empresa_info.tasa) %}
         <tr style="background-color: #2b81da;color: white; font-weight: bold;">
             <td align="center" width="50">COMPAÑÍA</td>
             <td align="center" width="100">P. ANUAL<br>(INC IGV)</td>
