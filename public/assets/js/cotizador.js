@@ -88,7 +88,7 @@ function get_modal(modal, empresa) {
     if (modal) {
         var $modal = $('#cotModal');
         $.ajax({
-            url: window.base_url +'?modal=' + modal + '&empresa=' +empresa,
+            url: location.pathname +'?modal=' + modal + '&empresa=' +empresa,
             success: function (response) {
                 $modal.find('#cotModal-title').text(modal.replace('_', ' ').toUpperCase());
                 $modal.find('#cotModal-body').html(response);
