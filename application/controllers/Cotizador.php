@@ -61,7 +61,7 @@ class Cotizador extends CI_Controller
                 $this->twig->display('cotizacion', $data);
             }
         } else {
-            redirect("/cotizador/cotizacion_error/", 'refresh', 200);
+            redirect("/cotizacion_error/", 'refresh', 200);
         }
     }
 
@@ -76,11 +76,11 @@ class Cotizador extends CI_Controller
 
             if ($id && $this->_send_mail($cotizacion, false)) {
                 $id = $this->contacto_token($id, null, 1);
-                redirect("/cotizador/cotizacion/$id", 'refresh', 200);
+                redirect("/cotizacion/$id", 'refresh', 200);
             }
         }
 
-        redirect("/cotizador/cotizacion_error/", 'refresh', 200);
+        redirect("/cotizacion_error/", 'refresh', 200);
     }
 
     private function contacto_token($value, $value2, $mode)
@@ -104,7 +104,7 @@ class Cotizador extends CI_Controller
         // for client
         $empresas_info = $this->Cotizador_Model->get_cotizacion_info_by_auto($data->vehiculo_marca_id,
             $data->vehiculo_modelo_id, $data->vehiculo_anio_fabricacion_id);
-        $cotizacion_url = base_url('/cotizador/cotizacion/' . md5($this->config->item('encryption_key') . $data->id) . $data->id);
+        $cotizacion_url = base_url('/cotizacion/' . md5($this->config->item('encryption_key') . $data->id) . $data->id);
 
         $mail = $this->twig->render('mails/cliente', array(
             'cotizacion' => $data,
