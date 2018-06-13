@@ -81,7 +81,7 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>DNI</label>
-                                <input class="form-control" name="conductor_dni" required="required" maxlength="8">
+                                <input type="number" class="form-control" name="conductor_dni" required="required"  onKeyPress="if(this.value.length==8) return false;">
                             </div>
                         </div>
                         <div class="col-lg-6">
