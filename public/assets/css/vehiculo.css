@@ -156,7 +156,10 @@
 }
 
 @media print {
-    .btn-cotizar, .btn-imprimir{
+    .btn-cotizar, .btn-imprimir, .navbar, .container-fluid, footer{
         display: none;
+    }
+    .vehiculo{
+        padding: 10px 0;
     }
 }
