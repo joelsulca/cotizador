@@ -48,18 +48,18 @@
             </td>
             <td valign="top" align="center" width="100" style="padding-top: 10px;">
                 {% if prima > 350 %}
-                    $ {{ prima }}
+                    $ {{ prima|number_format(2, '.', ',') }}
                 {% else %}
                     $ 350
                 {% endif %}
                 <br>
                 *CUOTA MENSUAL<br>
                 (4 MESES)<br>
-                $ {{ prima / 4 }}
+                $ {{ (prima / 4)|number_format(2, '.', ',') }}
             </td>
             <td valign="top" align="center" width="100" style="padding-top: 10px;">
                 DAÑO PROPIO <br>
-                Hasta el valor convenido $ {{ cotizacion.vehiculo_valor_comercial }}<br>
+                Hasta el valor convenido $ {{ cotizacion.vehiculo_valor_comercial|number_format(2, '.', ',') }}<br>
                 RESPONSABILIDAD CIVIL<br>
                 Hasta $150,000<br>
             </td>
