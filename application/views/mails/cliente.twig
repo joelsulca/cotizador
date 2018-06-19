@@ -12,7 +12,7 @@
     <span style="font-family: arial; font-size: 14px;color:#808080;">Te Saluda <strong>Ariansen Allemant</strong>, cuenta con
     nosotros para asesorarte en la adquisición de tu <strong>Seguro vehicular</strong> para el </span>
     <span style="font-family: arial; font-size: 14px; color:#7ccb4e;">{{ cotizacion.marca }} {{ cotizacion.modelo }}</span>
-    <span style="font-family: arial; font-size: 14px;color:#808080;">valorizado en $ {{ cotizacion.vehiculo_valor_comercial }}</span>
+    <span style="font-family: arial; font-size: 14px;color:#808080;">valorizado en $ {{ cotizacion.vehiculo_valor_comercial|number_format(2, '.', ',') }}</span>
     <br>
 
 {% endblock %}

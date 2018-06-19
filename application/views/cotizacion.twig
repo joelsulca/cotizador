@@ -39,7 +39,7 @@
                     </tr>
                     <tr>
                         <td style="font-weight:bold;">Valor Convenio:</td>
-                        <td>{{ cotizacion.vehiculo_valor_comercial }}</td>
+                        <td>$ {{ cotizacion.vehiculo_valor_comercial|number_format(2, '.', ',') }}</td>
                     </tr>
                     </tbody>
                 </table>
