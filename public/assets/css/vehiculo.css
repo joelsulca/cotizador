@@ -9,10 +9,9 @@
         font-weight: bold;
     }
 
-    .color-tr-table > td {
+    .table>tbody>tr>td {
         vertical-align: middle !important;
     }
-
     .range {
         width: 100%;
         display: inline-flex;
