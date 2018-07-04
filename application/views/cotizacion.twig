@@ -35,10 +35,10 @@
                     </tr>
                     <tr>
                         <td style="font-weight:bold;">Año:</td>
-                        <td>{{ cotizacion.anio }}</td>
+                        <td>{{ cotizacion.anio|number_format }}</td>
                     </tr>
                     <tr>
-                        <td style="font-weight:bold;">Valor Convenio:</td>
+                        <td style="font-weight:bold;">Valor Pactado:</td>
                         <td>$ {{ cotizacion.vehiculo_valor_comercial|number_format(2, '.', ',') }}</td>
                     </tr>
                     </tbody>
@@ -75,7 +75,7 @@
                         $ 350
                     {% endif %}
                         <br>
-                        *CUOTA MENSUAL<br>
+                        CUOTA MENSUAL<br>
                         (4 MESES)<br>
                         $ {{ (prima / 4)|number_format(2, '.', ',') }}
                     </td>
