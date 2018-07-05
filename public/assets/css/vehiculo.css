@@ -2,7 +2,9 @@
     .color-red {
         color: #ff2f27;
     }
-
+    a {
+        text-decoration: underline;
+    }
     .color-tr-table {
         background-color: #2b81da;
         color: white;

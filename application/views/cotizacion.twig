@@ -75,13 +75,13 @@
                         $ 350
                     {% endif %}
                         <br>
-                        CUOTA MENSUAL<br>
+                        <div style="background-color: #2e4cbb; font-weight: bold; color: white;">CUOTA MENSUAL</div>
                         (4 MESES)<br>
                         $ {{ (prima / 4)|number_format(2, '.', ',') }}
                     </td>
                     <td>
                         DAÑO PROPIO <br>
-                        Hasta el valor convenido $ {{ cotizacion.vehiculo_valor_comercial|number_format(2, '.', ',') }}<br>
+                        Hasta el valor pactado $ {{ cotizacion.vehiculo_valor_comercial|number_format(2, '.', ',') }}<br>
                         RESPONSABILIDAD CIVIL<br>
                         Hasta $150,000<br>
                         <a href="javascript:get_modal('cobertura', {{ empresa_info.id }});">Ver Detalles</a>
@@ -95,9 +95,9 @@
                     </td>
                     <td>
                         TALLERES AFILIADOS<br>
-                        15% Minimo $150<br>
+                        15% Mínimo $150<br>
                         TALLERES MULTIMARCA<br>
-                        10% Minimo $150<br>
+                        10% Mínimo $150<br>
                         <a href="javascript:get_modal('deducible', {{ empresa_info.id }});">Ver Detalles</a>
                     </td>
                     <td>
