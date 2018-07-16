@@ -47,11 +47,7 @@
             <td valign="top" width="50" style="padding:10px 0 0 15px;">{{ empresa_info.nombre}}
             </td>
             <td valign="top" align="center" width="100" style="padding-top: 10px;">
-                {% if prima > 350 %}
-                    $ {{ prima|number_format(2, '.', ',') }}
-                {% else %}
-                    $ 350
-                {% endif %}
+                $ {{ prima|number_format(2, '.', ',') }}
                 <br>
                 *CUOTA MENSUAL<br>
                 (4 MESES)<br>
