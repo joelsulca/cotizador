@@ -2,18 +2,21 @@
     .color-red {
         color: #ff2f27;
     }
+
     a {
         text-decoration: underline;
     }
+
     .color-tr-table {
         background-color: #2b81da;
         color: white;
         font-weight: bold;
     }
 
-    .table>tbody>tr>td {
+    .table > tbody > tr > td {
         vertical-align: middle !important;
     }
+
     .range {
         width: 100%;
         display: inline-flex;
@@ -199,6 +202,20 @@
         background-color: #104E8B;
         color: #FFF;
         font-weight: bold;
+    }
+
+    .title-form {
+        text-transform: uppercase;
+        text-align: center;
+        background: #c04b3f;
+        color: #ffffff;
+        border-radius: 5px 5px 0px 0px;
+        text-shadow: 0px 1px 3px #0c0909;
+        height: 40px;
+        display: grid;
+        font-size: 18px;
+        box-shadow: 0px 0px 6px 5px #130505bd;
+    "
     }
 }
 
