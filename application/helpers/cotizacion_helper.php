@@ -63,6 +63,6 @@ if ( ! function_exists('prima_comercial'))
      */
     function prima_comercial($valor_comercial, $tasa)
     {
-        return ($valor_comercial * $tasa) * get_instance()->config->item('factor_anual');
+        return ($valor_comercial * $tasa >=350) * get_instance()->config->item('factor_anual');
     }
 }
