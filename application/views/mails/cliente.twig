@@ -49,8 +49,8 @@
             <td valign="top" align="center" width="100" style="padding-top: 10px;">
                 $ {{ prima|number_format(2, '.', ',') }}
                 <br>
-                *CUOTA MENSUAL<br>
-                (4 MESES)<br>
+                <div style="background-color: #2b81da; font-weight: bold; color: white;">CUOTA MENSUAL<br>
+                    (4 MESES)</div>
                 $ {{ (prima / 4)|number_format(2, '.', ',') }}
             </td>
             <td valign="top" align="center" width="100" style="padding-top: 10px;">
@@ -67,9 +67,9 @@
             </td>
             <td valign="top" align="center" width="100" style="padding:10px">
                 TALLERES AFILIADOS<br>
-                15% Minimo $150<br>
+                15% Mínimo $150<br>
                 TALLERES MULTIMARCA<br>
-                10% Minimo $150<br>
+                10% Mínimo $150<br>
             </td>
             <td valign="top" align="center" width="100" style="padding:10px">
                 {% if cotizacion.vehiculo_valor_comercial > 50000 %}
