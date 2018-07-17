@@ -120,7 +120,7 @@ class Cotizador extends CI_Controller
         $r1 = false; $r2 = false;
 
         if(!$only_render)
-            $r1 = $this->sendgridci->sendHtmlMail('ariansen.cliente@gmail.com', $data->conductor_correo, "Ariansen Contacto - Le enviamos los detalles de su cotización.", $mail);
+            $r1 = $this->sendgridci->sendHtmlMail($this->config->item('ariansen_mail_from'), $data->conductor_correo, "Ariansen Contacto - Le enviamos los detalles de su cotización.", $mail);
 
         // for ariansen
         $mail = $this->twig->render('mails/contacto', array('cotizacion' => $data));
@@ -132,7 +132,7 @@ class Cotizador extends CI_Controller
         }
 
         if (!$only_render)
-            $r2 = $this->sendgridci->sendHtmlMail('ariansen.cliente@gmail.com', "ariansen1@gmail.com", "Cotizacion Ariansen de $nombres", $mail);
+            $r2 = $this->sendgridci->sendHtmlMail($this->config->item('ariansen_mail_from'), $this->config->item('ariansen_mail_to'), "Cotizacion Ariansen de $nombres", $mail);
 
         return ($only_render)? true : ( $r1 & $r2 );
     }
