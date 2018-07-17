@@ -523,3 +523,6 @@ $config['rewrite_short_tags'] = FALSE;
 $config['proxy_ips'] = '';
 
 $config['factor_anual'] = 1.2154;
+
+$config['ariansen_mail_from'] = 'ariansen.cliente@gmail.com';
+$config['ariansen_mail_to'] = 'ariansen1@gmail.com';
