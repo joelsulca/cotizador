@@ -155,7 +155,7 @@ class Cotizador extends CI_Controller
 
     private function redirect($uri, $method, $code)
     {
-        if(strpos(base_url(), 'cotizador') === FALSE){
+        if(strpos(base_url(), '/cotizador') === FALSE){
             $uri = "/cotizador$uri";
         }
         redirect($uri, $method, $code);
