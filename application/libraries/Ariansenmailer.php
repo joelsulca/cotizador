@@ -30,6 +30,8 @@ class Ariansenmailer
         $r = $CI->email->send(FALSE);
         if(!$r){
             log_message("DEBUG", strtoupper(ENVIRONMENT ) . " - EL CORREO NO PUDO SER ENVIADO A $to_mail, EL FLUJO CONTINUA");
+        }else{
+            log_message("DEBUG", strtoupper(ENVIRONMENT ) . " - CORREO ENVIADO A $to_mail, EL FLUJO CONTINUA");
         }
         if(ENVIRONMENT === "development" ) {
             $r = TRUE; // if fails en development the flow continue
