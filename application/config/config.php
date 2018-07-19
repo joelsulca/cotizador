@@ -223,7 +223,7 @@ $config['allow_get_array'] = TRUE;
 | your log files will fill up very fast.
 |
 */
-$config['log_threshold'] = 0;
+$config['log_threshold'] = array(1, 2);
 
 /*
 |--------------------------------------------------------------------------
@@ -234,7 +234,7 @@ $config['log_threshold'] = 0;
 | application/logs/ directory. Use a full server path with trailing slash.
 |
 */
-$config['log_path'] = '';
+$config['log_path'] = APPPATH . DIRECTORY_SEPARATOR. 'logs' . DIRECTORY_SEPARATOR;
 
 /*
 |--------------------------------------------------------------------------
@@ -526,3 +526,4 @@ $config['factor_anual'] = 1.2154;
 
 $config['ariansen_mail_from'] = 'contacto@ariansen.pe';
 $config['ariansen_mail_to'] = 'contacto@ariansen.pe';
+$config['ariansen_mail_from_displayname'] = 'Ariansen - Contacto';

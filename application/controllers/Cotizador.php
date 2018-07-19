@@ -61,7 +61,7 @@ class Cotizador extends CI_Controller
                 $this->twig->display('cotizacion', $data);
             }
         } else {
-            redirect("/cotizacion_error/", 'refresh', 200);
+            $this->redirect("/cotizacion_error/", 'refresh', 200);
         }
     }
 
@@ -76,11 +76,11 @@ class Cotizador extends CI_Controller
 
             if ($id && $this->_send_mail($cotizacion, false)) {
                 $id = $this->contacto_token($id, null, 1);
-                redirect("/cotizacion/$id", 'refresh', 200);
+                $this->redirect("/cotizacion/$id", 'refresh', 200);
             }
         }
 
-        redirect("/cotizacion_error/", 'refresh', 200);
+        $this->redirect("/cotizacion_error/", 'refresh', 200);
     }
 
     private function contacto_token($value, $value2, $mode)
@@ -97,7 +97,8 @@ class Cotizador extends CI_Controller
 
     private function _send_mail($data, $only_render)
     {
-        $this->load->library('sendgridci');
+        //$this->load->library('sendgridci');
+        $this->load->library('ariansenmailer');
         $this->load->library('twig');
 
         $nombres = $data->conductor_nombres . " " . $data->conductor_apellidos;
@@ -120,7 +121,7 @@ class Cotizador extends CI_Controller
         $r1 = false; $r2 = false;
 
         if(!$only_render)
-            $r1 = $this->sendgridci->sendHtmlMail($this->config->item('ariansen_mail_from'), $data->conductor_correo, "Ariansen Contacto - Le enviamos los detalles de su cotización.", $mail);
+            $r1 = $this->ariansenmailer->sendHtmlMail($data->conductor_correo, "Ariansen Contacto - Le enviamos los detalles de su cotización.", $mail);
 
         // for ariansen
         $mail = $this->twig->render('mails/contacto', array('cotizacion' => $data));
@@ -132,7 +133,7 @@ class Cotizador extends CI_Controller
         }
 
         if (!$only_render)
-            $r2 = $this->sendgridci->sendHtmlMail($this->config->item('ariansen_mail_from'), $this->config->item('ariansen_mail_to'), "Cotizacion Ariansen de $nombres", $mail);
+            $r2 = $this->ariansenmailer->sendHtmlMail($this->config->item('ariansen_mail_to'), "Cotizacion Ariansen de $nombres", $mail);
 
         return ($only_render)? true : ( $r1 & $r2 );
     }
@@ -150,6 +151,14 @@ class Cotizador extends CI_Controller
 
         $html = $this->twig->render("modals/$modal", $data);
         echo $html;
+    }
+
+    private function redirect($uri, $method, $code)
+    {
+        if(strpos(base_url(), 'cotizador') === FALSE){
+            $uri = "/cotizador$uri";
+        }
+        redirect($uri, $method, $code);
     }
 
 }
