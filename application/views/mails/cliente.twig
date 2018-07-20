@@ -6,7 +6,7 @@
     <br>
     <br>
     <span style="font-family: arial; font-size: 28px; color:#808080;">
-                                            Hola {{ cotizacion.conductor_nombres }} {{ cotizacion.conductor_apellidos }},</span><br>
+                                            Hola {{ cotizacion.conductor_nombres }}</span><br>
     <span style="font-family: arial; font-size: 28px; color:#808080;"></span><br>
 
     <span style="font-family: arial; font-size: 14px;color:#808080;">Te Saluda <strong>Ariansen Allemant</strong>, cuenta con
@@ -17,7 +17,7 @@
 
 {% endblock %}
 {% block summary %}
-    <table class="table table-responsive" width="640" bgcolor="#fcfcfc" border="0" cellspacing="0" cellpadding="0"
+    <table class="table table-responsive" width="680" bgcolor="#fcfcfc" border="0" cellspacing="0" cellpadding="0"
            style="color:#898989;font-family: arial; font-size: 13px;">
         <tbody>
         <tr>
@@ -35,16 +35,16 @@
         {% for empresa_info in empresas_info %}
             {% set prima= prima_comercial(cotizacion.vehiculo_valor_comercial, empresa_info.tasa) %}
         <tr style="background-color: #2b81da;color: white; font-weight: bold;">
-            <td align="center" width="50">COMPAÑÍA</td>
+            <td align="center" width="100">COMPAÑÍA</td>
             <td align="center" width="100">P. ANUAL<br>(INC IGV)</td>
             <td align="center" width="100">COBERTURAS</td>
             <td align="center" width="100">ASISTENCIAS</td>
             <td align="center" width="100">DEDUCIBLES</td>
-            <td align="center" width="100">¿REQUIERE GPS?</td>
+            <td align="center" width="50">¿GPS?</td>
         </tr>
 
         <tr>
-            <td valign="top" width="50" style="padding:10px 0 0 15px;">{{ empresa_info.nombre}}
+            <td valign="top" width="100" style="padding:10px 0 0 15px;">{{ empresa_info.nombre}}
             </td>
             <td valign="top" align="center" width="100" style="padding-top: 10px;">
                 $ {{ prima|number_format(2, '.', ',') }}
@@ -62,7 +62,7 @@
             <td valign="top" align="center" width="100" style="padding:10px">
                 CHOFER DE REEMPLAZO<br>
                 Hasta 3 veces al año<br>
-                AUXILIO MECANICO<br>
+                AUXILIO MECÁNICO<br>
                 24 horas<br>
             </td>
             <td valign="top" align="center" width="100" style="padding:10px">
@@ -71,7 +71,7 @@
                 TALLERES MULTIMARCA<br>
                 10% Mínimo $150<br>
             </td>
-            <td valign="top" align="center" width="100" style="padding:10px">
+            <td valign="top" align="center" width="50" style="padding:10px">
                 {% if cotizacion.vehiculo_valor_comercial > 50000 %}
                     SI
                 {% elseif empresa_info.gps == 1 %}
