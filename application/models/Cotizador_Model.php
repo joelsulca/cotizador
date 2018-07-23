@@ -64,7 +64,7 @@ on mm.id = cc.vehiculo_marca_id where cc.id = $id");
     public function get_cotizacion_info_by_auto($marca, $modelo, $anio)
     {
         $query = $this->db
-            ->query("select e.nombre, ec.gps, ec.tasa, e.id
+            ->query("select e.nombre, ec.gps, ec.tasa, e.id, e.logo
                 from empresa_auto_info_cotizacion ec 
                 inner join empresa e
                 on e.id = ec.empresa_id 
