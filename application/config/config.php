@@ -524,6 +524,8 @@ $config['proxy_ips'] = '';
 
 $config['factor_anual'] = 1.2154;
 
-$config['ariansen_mail_from'] = 'contacto@ariansen.pe';
-$config['ariansen_mail_to'] = 'contacto@ariansen.pe';
-$config['ariansen_mail_from_displayname'] = 'Ariansen - Contacto';
+$config['ariansen_mail_from'] = 'contacto@ariansen.pe'; //cuenta de correo remitente hacia el correo del cliente
+$config['ariansen_mail_to'] = 'contacto@ariansen.pe'; //cuenta de correo de ariansen que recibe la solicitud de cotizacion
+$config['ariansen_mail_from_displayname'] = 'Ariansen - Seguros'; //nombre del remitente (correo segun "ariansen_mail_from")
+$config['ariansen_mail_client_subject'] = 'Ariansen Contacto - Le enviamos los detalles de su cotización.'; // asunto mail a cliente
+$config['ariansen_mail_contact_subject'] = 'Cotizacion Ariansen de %s'; // asunto mail a contacto ariansen, %s se reemplazara por el nombre del cliente

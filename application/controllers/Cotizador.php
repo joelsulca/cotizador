@@ -121,7 +121,8 @@ class Cotizador extends CI_Controller
         $r1 = false; $r2 = false;
 
         if(!$only_render)
-            $r1 = $this->ariansenmailer->sendHtmlMail($data->conductor_correo, "Ariansen Contacto - Le enviamos los detalles de su cotización.", $mail);
+            $r1 = $this->ariansenmailer->sendHtmlMail($data->conductor_correo,
+                $this->config->item('ariansen_mail_client_subject'), $mail);
 
         // for ariansen
         $mail = $this->twig->render('mails/contacto', array('cotizacion' => $data));
@@ -133,7 +134,8 @@ class Cotizador extends CI_Controller
         }
 
         if (!$only_render)
-            $r2 = $this->ariansenmailer->sendHtmlMail($this->config->item('ariansen_mail_to'), "Cotizacion Ariansen de $nombres", $mail);
+            $r2 = $this->ariansenmailer->sendHtmlMail($this->config->item('ariansen_mail_to'),
+                sprintf($this->config->item('ariansen_mail_contact_subject'), $nombres), $mail);
 
         return ($only_render)? true : ( $r1 & $r2 );
     }
