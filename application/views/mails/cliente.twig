@@ -36,7 +36,7 @@
             {% set prima= prima_comercial(cotizacion.vehiculo_valor_comercial, empresa_info.tasa) %}
         <tr style="background-color: #7e888c;color: white; font-weight: bold;">
             <td align="center" width="100">COMPAÑÍA</td>
-            <td align="center" width="100">P. ANUAL<br>(INC IGV)</td>
+            <td align="center" width="100">CUOTA MENSUAL<br>(4 MESES)</td>
             <td align="center" width="100">COBERTURAS</td>
             <td align="center" width="100">ASISTENCIAS</td>
             <td align="center" width="100">DEDUCIBLES</td>
@@ -47,11 +47,10 @@
             <td valign="top" width="100" style="padding:10px 0 0 15px;">{{ empresa_info.nombre}}
             </td>
             <td valign="top" align="center" width="100" style="padding-top: 10px;">
-                $ {{ prima|number_format(2, '.', ',') }}
-                <br>
-                <div style="background-color: #7e888c; font-weight: bold; color: white;">CUOTA MENSUAL<br>
-                    (4 MESES)</div>
                 $ {{ (prima / 4)|number_format(2, '.', ',') }}
+                <br>
+                <div style="background-color: #7e888c; font-weight: bold; color: white;">PRIMA. ANUAL<br>(INC IGV)</div>
+                $ {{ prima|number_format(2, '.', ',') }}
             </td>
             <td valign="top" align="center" width="100" style="padding-top: 10px;">
                 DAÑO PROPIO <br>
