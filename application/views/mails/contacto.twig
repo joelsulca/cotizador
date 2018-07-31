@@ -16,8 +16,9 @@
     <tr> <td>Modelo: </td><td>{{ cotizacion.modelo }}</td></tr>
     <tr> <td>Año Fabricación: </td><td>{{ cotizacion.vehiculo_anio_fabricacion_id }}</td></tr>
     <tr> <td colspan="2">Datos de la cotización</td></tr>
-    <tr> <td>Valor comercial: </td><td>{{ cotizacion.vehiculo_valor_comercial }}</td></tr>
+    <tr> <td>Valor Pactado: </td><td>$ {{ cotizacion.vehiculo_valor_comercial }}</td></tr>
+    <tr> <td>Prima Anunal</td><td>$ {{ prima|number_format(2, '.', ',') }}</td></tr>
     <tr> <td>Cuotas: </td><td>4</td></tr>
-    <tr> <td>Valor de Cuota: </td><td>$ {{ cotizacion.vehiculo_valor_comercial / 4 }}</td></tr>
+    <tr> <td>Valor de Cuota: </td><td>$ {{ (prima / 4)|number_format(2, '.', ',') }}</td></tr>
 </table>
 {% endblock %}
