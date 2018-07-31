@@ -4,19 +4,20 @@
 {% endblock %}
 {% block summary %}
 <table border="1">
-    <tr><td colspan="2">Datos del cliente</td></tr>
+    <tr> <td colspan="2">Datos del cliente</td></tr>
     <tr> <td>Nombre Completo:</td> <td>{{ cotizacion.conductor_nombres }} {{ cotizacion.conductor_apellidos }}</td></tr>
     <tr> <td>Email:</td> <td>{{ cotizacion.conductor_correo }} </td></tr>
     <tr> <td>DNI:</td> <td>{{ cotizacion.conductor_dni }}</td></tr>
     <tr> <td>Teléfono:</td><td>{{ cotizacion.conductor_celular }}</td></tr>
+    <tr> <td>Fecha nacimiento:</td><td>{{ cotizacion.conductor_fec_nac }}</td></tr>
     <tr> <td>Fecha solicitud:</td> <td>{{ cotizacion.fecha_creacion }}</td></tr>
-    <tr><td colspan="2">Datos del Vehiculo</td></tr>
-    <tr><td>Marca: </td><td>{{ cotizacion.marca }}</td></tr>
-    <tr><td>Modelo: </td><td>{{ cotizacion.modelo }}</td></tr>
-    <tr><td>Año Fabricación: </td><td>{{ cotizacion.vehiculo_anio_fabricacion_id }}</td></tr>
-    <tr><td colspan="2">Datos de la cotización</td></tr>
-    <tr><td>Valor comercial: </td><td>{{ cotizacion.vehiculo_valor_comercial }}</td></tr>
-    <tr><td>Cuotas: </td><td>4</td></tr>
-    <tr><td>Valor de Cuota: </td><td>$ {{ cotizacion.vehiculo_valor_comercial / 4 }}</td></tr>
+    <tr> <td colspan="2">Datos del Vehiculo</td></tr>
+    <tr> <td>Marca: </td><td>{{ cotizacion.marca }}</td></tr>
+    <tr> <td>Modelo: </td><td>{{ cotizacion.modelo }}</td></tr>
+    <tr> <td>Año Fabricación: </td><td>{{ cotizacion.vehiculo_anio_fabricacion_id }}</td></tr>
+    <tr> <td colspan="2">Datos de la cotización</td></tr>
+    <tr> <td>Valor comercial: </td><td>{{ cotizacion.vehiculo_valor_comercial }}</td></tr>
+    <tr> <td>Cuotas: </td><td>4</td></tr>
+    <tr> <td>Valor de Cuota: </td><td>$ {{ cotizacion.vehiculo_valor_comercial / 4 }}</td></tr>
 </table>
 {% endblock %}
