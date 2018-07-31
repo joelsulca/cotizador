@@ -51,7 +51,7 @@ class Cotizador_Model extends CI_Model
     {
         $query = $this->db
             ->query("select cc.vehiculo_modelo_id,cc.vehiculo_marca_id, cc.id, cc.conductor_apellidos, cc.conductor_celular, cc.conductor_correo, cc.conductor_dni,
-cc.conductor_nombres, cc.conductor_sexo, cc.fecha_creacion, cc.vehiculo_anio_fabricacion_id, cc.vehiculo_anio_fabricacion_id as anio,
+cc.conductor_nombres, cc.conductor_sexo, cc.fecha_creacion, cc.vehiculo_anio_fabricacion_id, cc.vehiculo_anio_fabricacion_id, cc.conductor_fec_nac as anio,
 cc.vehiculo_valor_comercial, mm.nombre as marca, m.nombre as modelo
 from cotizacion_contacto cc inner join modelo m 
 on m.id = cc.vehiculo_modelo_id and m.marca_id = cc.vehiculo_marca_id
