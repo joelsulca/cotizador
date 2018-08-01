@@ -68,7 +68,7 @@ on mm.id = cc.vehiculo_marca_id where cc.id = $id");
                 from empresa_auto_info_cotizacion ec 
                 inner join empresa e
                 on e.id = ec.empresa_id 
-                where ec.vehiculo_anio_fabricacion_id=$anio 
+                where e.activo=1 and ec.vehiculo_anio_fabricacion_id=$anio 
                 and ec.vehiculo_marca_id=$marca and ec.vehiculo_modelo_id=$modelo");
 
         return $query->result_object();
