@@ -125,7 +125,10 @@ class Cotizador extends CI_Controller
                 $this->config->item('ariansen_mail_client_subject'), $mail);
 
         // for ariansen
-        $mail = $this->twig->render('mails/contacto', array('cotizacion' => $data));
+        $mail = $this->twig->render('mails/contacto', array(
+            'cotizacion' => $data,
+            'empresas_info' => $empresas_info,
+            'cotizacion_url' => $cotizacion_url));
         // solo para prueba
         if($only_render==='contacto')
         {

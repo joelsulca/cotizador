@@ -3,7 +3,8 @@
 <h1>Le enviamos los datos de la solicitud #{{ cotizacion.id }}</h1>
 {% endblock %}
 {% block summary %}
-    {% set prima= prima_comercial(cotizacion.vehiculo_valor_comercial, empresa_info.tasa) %}
+    {% for empresa_info in empresas_info %}
+        {% set prima= prima_comercial(cotizacion.vehiculo_valor_comercial, empresa_info.tasa) %}
 <table border="1">
     <tr> <td colspan="2">Datos del cliente</td></tr>
     <tr> <td>Nombre Completo:</td> <td>{{ cotizacion.conductor_nombres }} {{ cotizacion.conductor_apellidos }}</td></tr>
@@ -22,4 +23,15 @@
     <tr> <td>Cuotas: </td><td>4</td></tr>
     <tr> <td>Valor de Cuota: </td><td>$ {{ (prima / 4)|number_format(2, '.', ',') }}</td></tr>
 </table>
+        <br>
+        {% endfor %}
+    <div style="text-align: center; padding:30px 0">
+        <a href="{{ cotizacion_url }}" target="_blank" style="text-transform: uppercase;
+    padding: 15px 15px 15px 15px;
+    border-radius: 5px;
+    background: #0070ba;
+    color: white;
+    text-decoration: none;
+    font-weight: bold">Ver detalle de la cotización</a>
+    </div>
 {% endblock %}
