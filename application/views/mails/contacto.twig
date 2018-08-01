@@ -3,6 +3,7 @@
 <h1>Le enviamos los datos de la solicitud #{{ cotizacion.id }}</h1>
 {% endblock %}
 {% block summary %}
+    {% set prima= prima_comercial(cotizacion.vehiculo_valor_comercial, empresa_info.tasa) %}
 <table border="1">
     <tr> <td colspan="2">Datos del cliente</td></tr>
     <tr> <td>Nombre Completo:</td> <td>{{ cotizacion.conductor_nombres }} {{ cotizacion.conductor_apellidos }}</td></tr>
