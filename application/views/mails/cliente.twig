@@ -9,7 +9,7 @@
                                             Hola {{ cotizacion.conductor_nombres }}</span><br>
     <span style="font-family: arial; font-size: 28px; color:#808080;"></span><br>
 
-    <span style="font-family: arial; font-size: 14px;color:#808080;">Gracias por cotizar con<strong>Ariansen Allemant Corredores de Seguros</strong>, cuenta con nosotros para asesorarte
+    <span style="font-family: arial; font-size: 14px;color:#808080;">Gracias por cotizar con <strong>Ariansen Allemant Corredores de Seguros</strong>, cuenta con nosotros para asesorarte
         en la adquisición del seguro vehicular para tu </span>
     <span style="font-family: arial; font-size: 14px; color:#7ccb4e;">{{ cotizacion.marca }} {{ cotizacion.modelo }}</span>
     <span style="font-family: arial; font-size: 14px;color:#808080;">valorizado en $ {{ cotizacion.vehiculo_valor_comercial|number_format(2, '.', ',') }}. <br>
@@ -46,13 +46,14 @@
         </tr>
 
         <tr>
-            <td valign="top" width="100" style="padding:10px 0 0 15px;">{{ empresa_info.logo}}
+            <td width="100"><img style="width: 80%;margin: 0 auto;display: block;" src="{{ empresa_info.logo }}">
             </td>
-            <td valign="top" align="center" width="100" style="padding-top: 10px;">
-                $ {{ (prima / 4)|number_format(2, '.', ',') }}
+            <td align="center" width="100">
+                <span style="display: block">$ {{ (prima / 4)|number_format(2, '.', ',') }}</span>
+
                 <br>
                 <div style="background-color: #7e888c; font-weight: bold; color: white;">PRIMA. ANUAL<br>(INC IGV)</div>
-                $ {{ prima|number_format(2, '.', ',') }}
+                <span style="margin-top: 15px;display: block;">$ {{ prima|number_format(2, '.', ',') }}</span>
             </td>
             <td valign="top" align="center" width="100" style="padding-top: 10px;">
                 DAÑO PROPIO <br>
