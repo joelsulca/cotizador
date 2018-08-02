@@ -69,10 +69,9 @@
                 <tr>
                     <td><img src="{{ empresa_info.logo }}"> </td>
                     <td>
-                        $ {{ (prima / 4)|number_format(2, '.', ',') }}
-                        <br>
+                        <span style="padding: 10px;display: block;">$ {{ (prima / 4)|number_format(2, '.', ',') }}</span>
                         <div style="background-color: #7e888c; font-weight: bold; color: white;">PRIMA ANUAL<br>(INC IGV)</div>
-                        $ {{ prima|number_format(2, '.', ',') }}
+                        <span style="padding: 10px;display: block;">$ {{ prima|number_format(2, '.', ',') }}</span>
                     </td>
                     <td>
                         DAÑO PROPIO <br>
